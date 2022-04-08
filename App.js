@@ -1,34 +1,47 @@
 import React from 'react';
-
 import {
   StyleSheet,
   View,
-  Text
+  Text,
+  ScrollView,
+  Image
 } from 'react-native';
  
 const App = () => {
 
   return (
-    <View>
-      <View style = {{marginBottom: 8, padding: 8, backgroundColor: 'blue'}}>
-        <Text style = {{color : 'white', alignItems: "center"}}>yeyeyeyee</Text>
+    <View >
+      <View style={[styles.UIBackground, {height: 70}]}>
+          <Text style={styles.TitleText}>foodline</Text>
       </View>
-      <View style = {{marginBottom: 8, padding: 8, backgroundColor: 'skyblue'}}>
-        <Text style = {{color : 'white', alignItems: "center"}}>yeyeyeyee</Text>
-      </View>
-      <View style={styles.View}>
-        <Text>HelloWorld~~</Text>
+      <ScrollView style = {styles.FoodList}>
+        <Text>
+          这里是食品列表。
+        </Text>
+      </ScrollView>
+      <View style={[styles.UIBackground, {height: 80}]}>
+        <Image style={{width: 45, height: 45, resizeMode: 'contain', marginTop: 10}} source={require('./src/img/png/carrot.png')}></Image>
       </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  View: {
-    height: 200,
-    // width: 200,
-    backgroundColor: 'rgba(200, 255, 0, 0.5)'
+  UIBackground: {
+    backgroundColor: '#f2f2f2',
+    alignItems: 'center'
+  },
+
+  FoodList: {
+    height: 420
+  },
+
+  TitleText: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 10
   }
+
 })
 
 
