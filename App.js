@@ -52,7 +52,7 @@ class App extends React.Component {
             </Text>
           </ScrollView>
           <View style={[styles.UIBackground, { height: 80 }]}>
-          <View style={styles.InputChoiceBox}>
+            <View style={styles.InputChoiceBox}>
               <TouchableOpacity>
                 <View style={{ flexDirection: 'row' }}>
                   <Image source={require('./src/img/png/scan.png')} style={styles.InputChoiceImage}></Image>
@@ -68,7 +68,7 @@ class App extends React.Component {
               </TouchableOpacity>
             </View>
             <TouchableOpacity onPress={this.mainPress}>
-              <Image style={{ width: 45, height: 45, resizeMode: 'contain', top: -30}} source={require('./src/img/png/carrot.png')}></Image>
+              <Image style={{ width: 45, height: 45, resizeMode: 'contain', top: -30 }} source={require('./src/img/png/carrot.png')}></Image>
             </TouchableOpacity>
           </View>
         </View>
