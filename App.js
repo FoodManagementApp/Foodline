@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native';
+import TextInputPage from './TextInputPage';
 
 
 class App extends React.Component {
@@ -37,10 +38,7 @@ class App extends React.Component {
   render() {
     if (this.state.page === '1') {
       return (
-        <View><Text>123</Text>
-          <TouchableOpacity onPress={this.mainPress}>
-            <Image style={{ width: 45, height: 45, resizeMode: 'contain', marginTop: 10 }} source={require('./src/img/png/carrot.png')}></Image>
-          </TouchableOpacity></View>
+        <TextInputPage></TextInputPage>
       )
     } else {
       return (
