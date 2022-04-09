@@ -25,7 +25,7 @@ class ImageInputPage extends React.Component{
             return(
                 <TouchableOpacity onPress={()=>this.setState({page : '1'})}>
                 <Text>
-                    testing~~~~~~~~~~~~
+                    ==========Camera page=======
                 </Text>
                 </TouchableOpacity>
             )
