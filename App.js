@@ -46,26 +46,32 @@ class App extends React.Component {
           <View style={[styles.UIBackground, { height: 70 }]}>
             <Text style={styles.TitleText}>foodline</Text>
           </View>
+
           <ScrollView style={styles.FoodList}>
             <Text>
               这里是食品列表。
             </Text>
           </ScrollView>
+
           <View style={[styles.UIBackground, { height: 80 }]}>
             <View style={styles.InputChoiceBox}>
+
               <TouchableOpacity>
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row', borderStyle: 'solid', borderWidth: 2}}>
                   <Image source={require('./src/img/png/scan.png')} style={styles.InputChoiceImage}></Image>
-                  <Text>scan</Text>
+                  <Text style={{color:'#58c0a9', textAlignVertical: 'center'}}>scan </Text>
                 </View>
               </TouchableOpacity>
 
               <TouchableOpacity onPress={this.mainPress}>
-                <View style={{ flexDirection: 'row' }}>
-                  <Text>write</Text>
+                <View style={{ flexDirection: 'row', borderStyle: 'solid', borderWidth: 2}}>
+                  <Text style={{color:'#58c0a9', textAlignVertical: 'center'}}> write</Text>
                   <Image source={require('./src/img/png/textInput.png')} style={styles.InputChoiceImage}></Image>
                 </View>
               </TouchableOpacity>
+
+            
+              
             </View>
             <TouchableOpacity onPress={this.mainPress}>
               <Image style={{ width: 45, height: 45, resizeMode: 'contain', top: -30 }} source={require('./src/img/png/carrot.png')}></Image>
@@ -105,6 +111,7 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderWidth: 2,
     flexDirection: 'row',
+    borderRadius: 9,
   }
 
 })
