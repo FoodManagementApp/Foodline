@@ -8,6 +8,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import TextInputPage from './TextInputPage';
+import ImageInputPage from './ImageInputPage';
 
 
 class App extends React.Component {
@@ -19,26 +20,31 @@ class App extends React.Component {
   }
 
   mainPress = () => {
-    if (this.state.page === '0') {
+
       this.setState(
         {
           page: "1"
         }
       )
-    } else {
-      this.setState(
-        {
-          page: "0"
-        }
-      )
     }
 
-  };
+  scanPress = () => { 
+    this.setState(
+      {
+        page: '2'
+      }
+    )
+
+  }
 
   render() {
     if (this.state.page === '1') {
       return (
         <TextInputPage></TextInputPage>
+      )
+    } else if (this.state.page === '2'){
+      return(
+        <ImageInputPage></ImageInputPage>
       )
     } else {
       return (
@@ -55,9 +61,8 @@ class App extends React.Component {
 
           <View style={[styles.UIBackground, { height: 80 }]}>
             <View style={styles.InputChoiceBox}>
-
-              <TouchableOpacity>
-                <View style={{ flexDirection: 'row', borderStyle: 'solid', borderWidth: 2}}>
+              <TouchableOpacity onPress={this.scanPress}>
+                <View style={{ flexDirection: 'row' }}>
                   <Image source={require('./src/img/png/scan.png')} style={styles.InputChoiceImage}></Image>
                   <Text style={{color:'#58c0a9', textAlignVertical: 'center'}}>scan </Text>
                 </View>
@@ -82,7 +87,6 @@ class App extends React.Component {
     }
   }
 }
-
 
 const styles = StyleSheet.create({
   UIBackground: {

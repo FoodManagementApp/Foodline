@@ -72,9 +72,9 @@ class TextInputPage extends React.Component {
                         <Button
                             title="add"
                             color="#58c0a9"
+                            onPress={this.backPress}
                         />
                     </View>
-
                 </ScrollView>
             )
         } else {
