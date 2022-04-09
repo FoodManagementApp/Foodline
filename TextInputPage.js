@@ -45,7 +45,7 @@ class TextInputPage extends React.Component {
                     </View>
 
                     <View style={[styles.input1, { height: 120 }]}>
-                        <TextInput style={{ borderStyle: 'solid', borderWidth: 2.5, height: 35, width: 300, borderRadius: 9, borderColor: '#f2f2f2', fontSize: 10, color: '#58c0a9' }}></TextInput>
+                        <TextInput type="number" placeholder="code" style={{ borderStyle: 'solid', borderWidth: 2.5, height: 35, width: 300, borderRadius: 9, borderColor: '#f2f2f2', fontSize: 10, color: '#58c0a9' }}></TextInput>
                     </View>
 
                     <View style={[styles.UIBackground, { height: 100 }]}>

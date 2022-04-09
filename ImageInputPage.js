@@ -28,7 +28,6 @@ class ImageInputPage extends React.Component{
                     testing~~~~~~~~~~~~
                 </Text>
                 </TouchableOpacity>
-
             )
         }
     }

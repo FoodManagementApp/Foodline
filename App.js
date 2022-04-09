@@ -10,7 +10,6 @@ import {
 import TextInputPage from './TextInputPage';
 import ImageInputPage from './ImageInputPage';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -34,7 +33,6 @@ class App extends React.Component {
         page: '2'
       }
     )
-
   }
 
   render() {
