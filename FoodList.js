@@ -12,9 +12,11 @@ import { MainContext } from './App';
 function FoodList(props) {
     const listContext = React.useContext(MainContext);
     const list = listContext.state.foodList
-    var newList = props==="undefined"?list:list.push(props.line)
-
-    // alert("list: " + newList + "props: " + props.line)
+    if (typeof(props.line) ==="undefined"){
+        var newList = list
+    } else {
+        var newList = list.push(props.line)
+    }
     return (
         <View>
             <Text>===Write your foodlist code here===</Text>
