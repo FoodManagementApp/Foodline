@@ -9,7 +9,8 @@ import {
     TouchableOpacity,
     ScrollView
 } from 'react-native';
-import App from './App';
+import MainPage from './MainPage';
+import App, { MainContext } from './App';
 
 class TextInputPage extends React.Component {
     constructor(props) {
@@ -78,7 +79,7 @@ class TextInputPage extends React.Component {
             )
         } else {
             return (
-                <App></App>
+                <MainPage line = "===从main来==="></MainPage>
             )
         }
 

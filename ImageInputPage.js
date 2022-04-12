@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import App from './App';
 import TextInputPage from './TextInputPage';
 
 class ImageInputPage extends React.Component{
@@ -21,7 +22,7 @@ class ImageInputPage extends React.Component{
     backPress = () => {
         this.setState(
             {
-                page: '1'
+                page: '0'
             }
         )
     }
@@ -29,6 +30,8 @@ class ImageInputPage extends React.Component{
     render(){
         if(this.state.page==='1'){
             return(<TextInputPage></TextInputPage>)
+        } else if (this.state.page==='0'){
+            return(<MainPage></MainPage>)
         } else {
             return(
                 <View style={{backgroundColor:'#222222'}}>
