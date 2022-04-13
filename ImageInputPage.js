@@ -7,8 +7,8 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import App from './App';
 import TextInputPage from './TextInputPage';
+import MainPage from './MainPage';
 
 class ImageInputPage extends React.Component{
 
