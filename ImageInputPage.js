@@ -50,7 +50,7 @@ class ImageInputPage extends React.Component {
         .then((response) => response.json())
         .then((responseData) => {
             this.setState({
-                name : responseData.product.generic_name_en,
+                name : responseData.product.product_name,
                 imageUrl : responseData.product.image_url
             })
         });
