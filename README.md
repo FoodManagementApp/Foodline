@@ -7,6 +7,13 @@
 3. - run `npm i -g react-native-cli`
    - run `npx react-native run-android `
    	- [run on device](https://reactnative.cn/docs/running-on-device)
+4. - run
+   npm install react-native-camera --save
+   react-native link react-native-camera
+   npm install react-native-qrcode-scanner --save
+   react-native link react-native-qrcode-scanner
+   npm install react-native-permissions --save
+   react-native link react-native-permissions
 
 4. Install Denpendency
 
