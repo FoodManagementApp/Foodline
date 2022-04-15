@@ -22,8 +22,13 @@ function FoodList(props) {
     this.state = {
         list: [
             {
-                foodName: "name",
+                foodName: "name1",
                 number: "10",
+                day: "day"
+            },
+            {
+                foodName: "name2",
+                number: "15",
                 day: "day"
             }
         ]
@@ -34,7 +39,7 @@ function FoodList(props) {
         let listArr = [];
         for( let i =0; i<this.state.list.length; i++){
             let item = (
-            <View>
+            <View key = {i}>
               <View style={[styles.flexs, { height: 80}]}>
               <Image style={{ left: 50, width: 50, height: 50, resizeMode: 'contain'}} source={require('./src/img/png/返回-黑.png')}></Image>
               <Text style={[styles.TitleName]}>{this.state.list[i].food}</Text>
@@ -45,20 +50,12 @@ function FoodList(props) {
             </View>
             )
             listArr.push(item)
-
-        return (
-            <View style={[styles.flexs, { height: 80 }]}>
-                {listArr} 
-                <Image style={{ left: 50, width: 50, height: 50, resizeMode: 'contain' }} source={require('./src/img/png/返回-黑.png')}></Image>
-                <Text style={[styles.TitleName]}>name</Text>
-                <Text style={[styles.Number]}>10</Text>
-                <Text style={[styles.Days]}>days</Text>
-                <Image style={{ left: -60, width: 300, height: 50, marginTop: 40, resizeMode: 'contain' }} source={require('./src/img/png/进度条.png')}></Image>
-            </View>
-        )
-
-
     }
+    return (
+        <View>
+            {listArr} 
+        </View>
+    )
 
 
 
