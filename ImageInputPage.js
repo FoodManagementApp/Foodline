@@ -8,35 +8,19 @@ import {
     TouchableOpacity,
     Linking
 } from 'react-native';
-import TextInputPage from './TextInputPage';
-import MainPage from './MainPage';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 
 
-class ImageInputPage extends React.Component {
+import { MainContext } from './App';
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            codeId: '',
-            name: ' ',
-            imageUrl: ' ',
-            page: '2'
-        }
-    }
+const ImageInputPage = () => {
 
-    onSuccess = e => {
+    const mc = React.useContext(MainContext);
+    const [state, setState] = React.useState({});
 
+    const onSuccess = e => {
         // code id
-        this.setState(
-            {
-                codeId : e.data,
-            }
-
-
-
-        )
 
         const url = `https://world.openfoodfacts.org/api/v2/product/${e.data}.json`
         fetch(url, {
@@ -49,67 +33,70 @@ class ImageInputPage extends React.Component {
         })
         .then((response) => response.json())
         .then((responseData) => {
-            this.setState({
+            setState({
                 name : responseData.product.product_name,
                 imageUrl : responseData.product.image_url
             })
         });
+
+        mc.setState(
+            {
+                foodList: mc.state.foodList,
+                codeId : e.data,
+                page: "1"
+            }
+        )
       
     };
 
 
-    backPress = () => {
-        alert("name: " + this.state.name + " id: " + this.state.codeId)
-        this.setState( 
+    const backPress = () => {
+        alert("name: " + state.foodName + " id: " + mc.state.codeId)
+        mc.setState(
             {
+                foodList: mc.state.foodList,
                 page: '0'
             }
         )
     }
 
 
-    render() {
-        if (this.state.page === '1') {
-            return (<TextInputPage></TextInputPage>)
-        } else if (this.state.page === '0') {
-            return (<MainPage></MainPage>)
-        } else {
-            return (
+        return (
 
-                <View style={{ backgroundColor: '#222222' }}>
-                    <View style={[styles.flexs, { height: 80 }]}>
-                        <TouchableOpacity onPress={this.backPress}>
-                            <Image style={[styles.imageBack]} source={require('./src/img/png/返回.png')}></Image>
-                        </TouchableOpacity>
+            <View style={{ backgroundColor: '#222222' }}>
+                <View style={[styles.flexs, { height: 80 }]}>
+                    <TouchableOpacity onPress={backPress}>
+                        <Image style={[styles.imageBack]} source={require('./src/img/png/返回.png')}></Image>
+                    </TouchableOpacity>
 
-                        <TouchableOpacity>
-                            <Text style={[styles.textProblems]}>Any Problems?</Text>
-                        </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Text style={[styles.textProblems]}>Any Problems?</Text>
+                    </TouchableOpacity>
 
-                        <TouchableOpacity>
-                            <Image style={[styles.imageMore]} source={require('./src/img/png/更多.png')}></Image>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View style={[styles.viewCameraFunction]}>
-                        <QRCodeScanner
-                            onRead={this.onSuccess}
-                            flashMode={RNCamera.Constants.FlashMode.auto}
-                        />
-                    </View>
-
-                    <View style={[styles.viewReminder]}>
-                        <Text style={[styles.textReminder]}>Please scan the barcode</Text>
-                    </View>
+                    <TouchableOpacity>
+                        <Image style={[styles.imageMore]} source={require('./src/img/png/更多.png')}></Image>
+                    </TouchableOpacity>
                 </View>
 
+                <View style={[styles.viewCameraFunction]}>
+                    <QRCodeScanner
+                        onRead={onSuccess}
+                        flashMode={RNCamera.Constants.FlashMode.auto}
+                    />
+                </View>
+
+                <View style={[styles.viewReminder]}>
+                    <Text style={[styles.textReminder]}>Please scan the barcode</Text>
+                </View>
+            </View>
 
 
 
-            )
-        }
-    }
+
+        )
+    
 }
+
 
 const styles = StyleSheet.create({
 
