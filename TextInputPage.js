@@ -77,8 +77,12 @@ const TextInputPage = () => {
                     {/* <TextInput style={[styles.InputBestBeforeDate, { right: 20 }]}></TextInput>
                     <TextInput style={[styles.InputBestBeforeDate, { right: 85 }]}></TextInput>
                     <TextInput style={[styles.InputBestBeforeDate, { right: 150 }]}></TextInput> */}
+                    
+                    <View style={[styles.selectDateButton]}>
+                    <Button title="Select Date" color="#58c0a9" onPress={() => setOpen(true)}/>
+                    </View>
 
-                    <Button title="Select Date" onPress={() => setOpen(true)} style={[styles.selectDateButton]}/>
+
                     <DatePicker
                         modal
                         open={open}
@@ -119,17 +123,10 @@ const styles = StyleSheet.create({
         margin: 60
     },
 
-    selectDateButton:{
-        borderStyle: 'solid',
-        borderWidth: 2.5,
-        height: 35,
-        width: 50,
-        borderRadius: 9,
-        borderColor: '#f2f2f2',
-        fontSize: 10,
-        color: '#58c0a9',
-        marginTop: 7.5,
-        position: "absolute"
+    selectDateButton: {
+        position: 'absolute',
+        display: 'flex',
+        right: 30
     },
 
     flexs: {
