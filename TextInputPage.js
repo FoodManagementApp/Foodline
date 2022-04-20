@@ -30,8 +30,7 @@ const TextInputPage = () => {
             newList.push(
                 {
                     foodName: nameInput,
-                    number: "8",
-                    day: "days",
+                    number: "80",
                     imageUrl: mc.state.imageUrl
                 }
             )
