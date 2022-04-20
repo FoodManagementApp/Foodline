@@ -31,14 +31,13 @@ const ImageInputPage = () => {
             mc.setState(
                 {
                     foodList: mc.state.foodList,
-                    codeId : e.data,
+                    codeId: e.data,
                     page: "1",
-                    name : responseData.product.product_name,
-                    imageUrl : responseData.product.image_url
+                    name: responseData.product.product_name,
+                    imageUrl: responseData.product.image_url
                 }
             )
         });
-        alert(mc.state.imageUrl)
 
     };
 

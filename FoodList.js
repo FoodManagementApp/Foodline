@@ -21,7 +21,7 @@ function FoodList() {
                 let item = (
                 <View key = {i}>
                   <View style={[styles.flexs, { height: 80}]}>
-                  <Image style={[styles.foodImage]} source={{uri: mc.state.imageUrl}}></Image>
+                  <Image style={[styles.foodImage]} source={{uri: mc.state.foodList[i].imageUrl}}></Image>
                   <Text style={[styles.TitleName]}>{mc.state.foodList[i].foodName}</Text>
                   <Text style={[styles.Number]}>{mc.state.foodList[i].number}</Text>
                   <Text style={[styles.Days]}>{mc.state.foodList[i].day}</Text>
