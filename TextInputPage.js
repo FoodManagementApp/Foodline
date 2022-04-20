@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -10,10 +10,13 @@ import {
     ScrollView
 } from 'react-native';
 import { MainContext } from './App';
+import DatePicker from 'react-native-date-picker';
 
 const TextInputPage = () => {
     const mc = React.useContext(MainContext);
     const [nameInput, setNameInput] = React.useState(mc.state.name);
+    const [date, setDate] = useState(new Date());
+    const [open, setOpen] = useState(false);
 
     const backPress = () => {
         mc.setState({
@@ -71,9 +74,25 @@ const TextInputPage = () => {
                 </View>
                 <View style={[styles.flexs, { height: 50 }]}>
                     <Text style={[styles.TextBestBeforeDate]}>best before date</Text>
-                    <TextInput style={[styles.InputBestBeforeDate, { right: 20 }]}></TextInput>
+                    {/* <TextInput style={[styles.InputBestBeforeDate, { right: 20 }]}></TextInput>
                     <TextInput style={[styles.InputBestBeforeDate, { right: 85 }]}></TextInput>
-                    <TextInput style={[styles.InputBestBeforeDate, { right: 150 }]}></TextInput>
+                    <TextInput style={[styles.InputBestBeforeDate, { right: 150 }]}></TextInput> */}
+
+                    <Button title="Select Date" onPress={() => setOpen(true)} style={[styles.selectDateButton]}/>
+                    <DatePicker
+                        modal
+                        open={open}
+                        date={date}
+                        onConfirm={(date) => {
+                            setOpen(false)
+                            setDate(date)
+                            alert(typeof(date))
+                        }}
+                        onCancel={() => {
+                            setOpen(false)
+                        }}
+                        mode = "date"
+                    />
                 </View>
                 <View style={[styles.flexs, { height: 50 }]}>
                     <Text style={[styles.TextRemark]}>remark</Text>
@@ -98,6 +117,19 @@ const styles = StyleSheet.create({
     Button: {
         display: 'flex',
         margin: 60
+    },
+
+    selectDateButton:{
+        borderStyle: 'solid',
+        borderWidth: 2.5,
+        height: 35,
+        width: 50,
+        borderRadius: 9,
+        borderColor: '#f2f2f2',
+        fontSize: 10,
+        color: '#58c0a9',
+        marginTop: 7.5,
+        position: "absolute"
     },
 
     flexs: {
