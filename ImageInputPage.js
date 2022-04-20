@@ -69,6 +69,16 @@ const ImageInputPage = () => {
         )
     }
 
+    const textPress = () => {
+        // alert("name: " + state.foodName + " id: " + mc.state.codeId)
+        mc.setState(
+            {
+                foodList: mc.state.foodList,
+                page: '1'
+            }
+        )
+    }
+
 
         return (
 
@@ -78,13 +88,11 @@ const ImageInputPage = () => {
                         <Image style={[styles.imageBack]} source={require('./src/img/png/返回.png')}></Image>
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={textPress}>
                         <Text style={[styles.textProblems]}>Any Problems?</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
-                        <Image style={[styles.imageMore]} source={require('./src/img/png/更多.png')}></Image>
-                    </TouchableOpacity>
+                    <Text>"  "</Text>
                 </View>
 
                 <View style={[styles.viewCameraFunction]}>
