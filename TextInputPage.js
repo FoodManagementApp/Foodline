@@ -77,7 +77,6 @@ const TextInputPage = () => {
                     {/* <TextInput style={[styles.InputBestBeforeDate, { right: 20 }]}></TextInput>
                     <TextInput style={[styles.InputBestBeforeDate, { right: 85 }]}></TextInput>
                     <TextInput style={[styles.InputBestBeforeDate, { right: 150 }]}></TextInput> */}
-                    
                     <View style={[styles.selectDateButton]}>
                     <Button title="Select Date" color="#58c0a9" onPress={() => setOpen(true)}/>
                     </View>
@@ -144,11 +143,12 @@ const styles = StyleSheet.create({
     InputCode: {
         borderStyle: 'solid',
         borderWidth: 2.5,
-        height: 35,
+        height: 40,
         width: 300,
         borderRadius: 9,
         borderColor: '#f2f2f2',
-        fontSize: 10,
+        fontSize: 15,
+        textAlign: 'center',
         color: '#58c0a9'
     },
 
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
         color: '#333333',
         marginTop: 10,
         position: "absolute",
-        width: 300
+        width: 300,
     },
 
     TextBestBeforeDate: {
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
         color: '#333333',
         marginTop: 7.5,
         position: "absolute",
-        width: 300
+        width: 300,
     },
 
     TextRemark: {
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
         color: '#333333',
         marginTop: 3,
         position: "absolute",
-        width: 300
+        width: 300,
     },
 
     input1: {
@@ -198,6 +198,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         margin: 'auto',
+        position: 'relative'
     },
 
     InputName: {
@@ -211,21 +212,23 @@ const styles = StyleSheet.create({
         fontSize: 10,
         color: '#58c0a9',
         marginTop: 10,
-        position: "absolute"
+        position: "absolute",
+        textAlign: 'center'
     },
 
-    InputBestBeforeDate: {
-        borderStyle: 'solid',
-        borderWidth: 2.5,
-        height: 35,
-        width: 50,
-        borderRadius: 9,
-        borderColor: '#f2f2f2',
-        fontSize: 10,
-        color: '#58c0a9',
-        marginTop: 7.5,
-        position: "absolute"
-    },
+    // InputBestBeforeDate: {
+    //     borderStyle: 'solid',
+    //     borderWidth: 2.5,
+    //     height: 35,
+    //     width: 50,
+    //     borderRadius: 9,
+    //     borderColor: '#f2f2f2',
+    //     fontSize: 10,
+    //     color: '#58c0a9',
+    //     marginTop: 7.5,
+    //     position: "absolute",
+    //     textAlign: 'center'
+    // },
 
     InputRemark: {
         right: 20,
@@ -238,7 +241,8 @@ const styles = StyleSheet.create({
         fontSize: 10,
         color: '#58c0a9',
         marginTop: 3,
-        position: "absolute"
+        position: "absolute",
+        textAlign: 'center'
     },
 
     FoodList: {
