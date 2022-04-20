@@ -35,13 +35,13 @@ const MainPage = () => {
       <View style={[styles.UIBackground, { height: 150 }]}>
       <View style={[styles.InputChoiceBox]}>
         <TouchableOpacity onPress={scanPress}>
-          <View style={{ flexDirection: 'row', borderStyle: 'solid', borderColor: '#bcbcbc', borderWidth: 1, borderRightWidth: 0.5, borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}>
+          <View style={[styles.scanButton]}>
             <Image source={require('./src/img/png/scan.png')} style={styles.InputChoiceImage}></Image>
             <Text style={{ color: '#58c0a9', textAlignVertical: 'center' }}>scan </Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={mainPress}>
-          <View style={{ flexDirection: 'row', borderStyle: 'solid', borderColor: '#bcbcbc', borderWidth: 1, borderLeftWidth: 0.5, borderTopRightRadius: 10, borderBottomRightRadius: 10 }}>
+          <View style={[styles.writeButton]}>
             <Text style={{ color: '#58c0a9', textAlignVertical: 'center' }}> write</Text>
             <Image source={require('./src/img/png/textInput.png')} style={styles.InputChoiceImage}></Image>
           </View>
@@ -109,6 +109,28 @@ const styles = StyleSheet.create({
     top: -100,
     flexDirection: 'row',
     borderRadius: 9,
+  },
+
+  scanButton: {
+    flexDirection: 'row',
+    borderStyle: 'solid', 
+    borderColor: '#bcbcbc', 
+    borderWidth: 1, 
+    borderRightWidth: 0.5, 
+    borderTopLeftRadius: 10, 
+    borderBottomLeftRadius: 10,
+    backgroundColor: '#ffffff'
+  },
+
+  writeButton:{
+    flexDirection: 'row', 
+    borderStyle: 'solid', 
+    borderColor: '#bcbcbc', 
+    borderWidth: 1, 
+    borderLeftWidth: 0.5, 
+    borderTopRightRadius: 10, 
+    borderBottomRightRadius: 10,
+    backgroundColor: '#ffffff'
   }
 
 })
