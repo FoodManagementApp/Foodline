@@ -17,7 +17,7 @@ import { MainContext } from './App';
 const ImageInputPage = () => {
 
     const mc = React.useContext(MainContext);
-    const [state, setState] = React.useState({});
+    // const [state, setState] = React.useState({});
 
     const onSuccess = e => {
         // code id
@@ -33,25 +33,34 @@ const ImageInputPage = () => {
         })
         .then((response) => response.json())
         .then((responseData) => {
-            setState({
-                name : responseData.product.product_name,
-                imageUrl : responseData.product.image_url
-            })
+            // setState({
+            //     name : responseData.product.product_name,
+            //     imageUrl : responseData.product.image_url
+            // })
+            mc.setState(
+                {
+                    foodList: mc.state.foodList,
+                    codeId : e.data,
+                    page: "1",
+                    name : responseData.product.product_name,
+                    imageUrl : responseData.product.image_url
+                }
+            )
         });
 
-        mc.setState(
-            {
-                foodList: mc.state.foodList,
-                codeId : e.data,
-                page: "1"
-            }
-        )
+        // mc.setState(
+        //     {
+        //         foodList: mc.state.foodList,
+        //         codeId : e.data,
+        //         page: "1"
+        //     }
+        // )
       
     };
 
 
     const backPress = () => {
-        alert("name: " + state.foodName + " id: " + mc.state.codeId)
+        // alert("name: " + state.foodName + " id: " + mc.state.codeId)
         mc.setState(
             {
                 foodList: mc.state.foodList,

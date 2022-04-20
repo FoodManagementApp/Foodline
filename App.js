@@ -5,7 +5,7 @@ export const MainContext = React.createContext({});
 function App() {
 
   const [state, setState] = React.useState(
-    { foodList: [], page: "0", codeId: undefined},
+    { foodList: [], page: "0", codeId: undefined, name: " ", imageUrl: " "},
   );
 
     return (

@@ -37,7 +37,7 @@ const TextInputPage = () => {
                     </View>
 
                     <View style={[styles.input1, { height: 120 }]}>
-                        <TextInput type="number" placeholder="code" style={[styles.InputCode]}></TextInput>
+                        <TextInput type="number" placeholder="code" style={[styles.InputCode]}>{mc.state.codeId}</TextInput>
                     </View>
 
                     <View style={[styles.UIBackground, { height: 100 }]}>
@@ -47,7 +47,7 @@ const TextInputPage = () => {
 
                     <View style={[styles.flexs, { height: 50 }]}>
                         <Text style={[styles.TextName]}>name</Text>
-                        <TextInput style={[styles.InputName]}></TextInput>
+                        <TextInput style={[styles.InputName]}>{mc.state.name}</TextInput>
                     </View>
                     <View style={[styles.flexs, { height: 50 }]}>
                         <Text style={[styles.TextBestBeforeDate]}>best before date</Text>
