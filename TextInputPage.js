@@ -75,9 +75,6 @@ const TextInputPage = () => {
                 </View>
                 <View style={[styles.flexs, { height: 50 }]}>
                     <Text style={[styles.TextBestBeforeDate]}>best before date</Text>
-                    {/* <TextInput style={[styles.InputBestBeforeDate, { right: 20 }]}></TextInput>
-                    <TextInput style={[styles.InputBestBeforeDate, { right: 85 }]}></TextInput>
-                    <TextInput style={[styles.InputBestBeforeDate, { right: 150 }]}></TextInput> */}
                     <View style={[styles.selectDateButton]}>
                     <Button title="Select Date" color="#58c0a9" onPress={() => setOpen(true)}/>
                     </View>

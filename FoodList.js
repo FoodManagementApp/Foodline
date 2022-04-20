@@ -24,7 +24,7 @@ function FoodList() {
                 // Best before date of item i
                 let bbDate = new Date(mc.state.foodList[i].bbDate);
                 var differenceTime = bbDate.getTime() - currentDate.getTime();
-                var differenceDay = (differenceTime / (1000 * 3600 * 24)).toFixed(0);
+                var differenceDay = (differenceTime / (1000 * 3600 * 24)).toFixed(0) >>> 0;
 
                 let item = (
                 <View key = {i}>
