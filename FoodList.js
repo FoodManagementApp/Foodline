@@ -74,19 +74,17 @@ const styles = StyleSheet.create({
     TitleName: {
         position: 'absolute',
         left: 100,
+        width: 300,
         fontWeight: 'bold',
-        textAlign: 'center',
         fontSize: 20,
         color: '#333333',
-        marginTop: 10,
-        height: 70,
+        height: 50
     },
 
     Number: {
         position: 'absolute',
         right: 80,
         fontWeight: 'bold',
-        textAlign: 'center',
         fontSize: 30,
         color: '#333333',
         marginTop: 20,
@@ -98,7 +96,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 30,
         fontWeight: 'bold',
-        textAlign: 'center',
         fontSize: 20,
         color: '#233333',
         marginTop: 10,
