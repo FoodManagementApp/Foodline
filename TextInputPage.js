@@ -31,7 +31,7 @@ const TextInputPage = () => {
                 {
                     foodName: nameInput,
                     number: "8",
-                    day: "day",
+                    day: "days",
                     imageUrl: mc.state.imageUrl
                 }
             )

@@ -24,7 +24,7 @@ function FoodList() {
                   <Image style={[styles.foodImage]} source={{uri: mc.state.foodList[i].imageUrl}}></Image>
                   <Text style={[styles.TitleName]}>{mc.state.foodList[i].foodName}</Text>
                   <Text style={[styles.Number]}>{mc.state.foodList[i].number}</Text>
-                  <Text style={[styles.Days]}>{mc.state.foodList[i].day}</Text>
+                  <Text style={[styles.Days]}>day(s)</Text>
                   <Image style={[styles.Process]} source={require('./src/img/png/进度条.png')}></Image>
 
                     {/* <View style={styles.container}>
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         color: '#333333',
         marginTop: 20,
         height: 70,
-        width: 30
+        width: 40
     },
 
 
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         color: '#233333',
         marginTop: 10,
         height: 50,
-        width: 50
+        width: 60
     },
 
     Process: {
