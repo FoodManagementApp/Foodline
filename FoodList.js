@@ -88,7 +88,8 @@ const styles = StyleSheet.create({
         fontSize: 30,
         color: '#333333',
         marginTop: 20,
-        height: 70
+        height: 70,
+        width: 30
     },
 
 
@@ -99,7 +100,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#233333',
         marginTop: 10,
-        height: 50
+        height: 50,
+        width: 50
     },
 
     Process: {
