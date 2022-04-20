@@ -11,13 +11,13 @@ import {
     Modal,
 } from 'react-native';
 import { MainContext } from './App';
-import px,{px2dp} from 'react-native-px2dp';
+//import px,{px2dp} from 'react-native-px2dp';
 
 function FoodList() {
     const mc = React.useContext(MainContext);
         let listArr = [];
         if (mc.state.foodList.length>0){
-            for( let i =0; i<mc.state.foodList.length; i++){
+            for( let i =1; i<mc.state.foodList.length; i++){
                 let item = (
                 <View key = {i}>
                   <View style={[styles.flexs, { height: 80}]}>

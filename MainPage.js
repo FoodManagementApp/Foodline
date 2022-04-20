@@ -11,7 +11,7 @@ import TextInputPage from './TextInputPage';
 import ImageInputPage from './ImageInputPage';
 import FoodList from './FoodList';
 import { MainContext } from './App';
-import LinearGradient from 'react-native-linear-gradient';
+//import LinearGradient from 'react-native-linear-gradient';
 
 const MainPage = () => {
 

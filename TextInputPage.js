@@ -13,69 +13,84 @@ import { MainContext } from './App';
 
 const TextInputPage = () => {
     const mc = React.useContext(MainContext);
+    const [nameInput, setNameInput] = React.useState(mc.state.name);
+
     const backPress = () => {
         mc.setState({
             page: "0",
-            foodList: [{
-                foodName: mc.state.codeId===undefined?"from text":"from img",
-                number: "10",
-                day: "day"
-            }],
+            foodList: mc.state.foodList
         })
     }
-        return (
-            <View>
-                <View style={[styles.flexs, { alignItems: 'center', height: 80 }]}>
-                    <TouchableOpacity onPress={backPress}>
-                        <Image style={{ left: 20, width: 25, height: 25, resizeMode: 'contain', marginTop: 10}} source={require('./src/img/png/返回-黑.png')}></Image>
-                    </TouchableOpacity>
-                </View>
-                <ScrollView>
 
-                    <View style={[styles.UIBackground, { height: 60 }]}>
-                        <Text style={{ position:'absolute', left: 5, top: 30, fontSize: 15 }}>Type the code on the food</Text>
-                    </View>
-
-                    <View style={[styles.input1, { height: 120 }]}>
-                        <TextInput type="number" placeholder="code" style={[styles.InputCode]}>{mc.state.codeId}</TextInput>
-                    </View>
-
-                    <View style={[styles.UIBackground, { height: 100 }]}>
-                        <Text style={[styles.Or]}>Or</Text>
-                        <Text style={{ position: 'absolute', left: 5, top: 70, fontSize: 15 }}>Type the information of the food</Text>
-                    </View>
-
-                    <View style={[styles.flexs, { height: 50 }]}>
-                        <Text style={[styles.TextName]}>name</Text>
-                        <TextInput style={[styles.InputName]}>{mc.state.name}</TextInput>
-                    </View>
-                    <View style={[styles.flexs, { height: 50 }]}>
-                        <Text style={[styles.TextBestBeforeDate]}>best before date</Text>
-                        <TextInput style={[styles.InputBestBeforeDate, { right: 20 }]}></TextInput>
-                        <TextInput style={[styles.InputBestBeforeDate, { right: 85 }]}></TextInput>
-                        <TextInput style={[styles.InputBestBeforeDate, { right: 150 }]}></TextInput>
-                    </View>
-                    <View style={[styles.flexs, { height: 50 }]}>
-                        <Text style={[styles.TextRemark]}>remark</Text>
-                        <TextInput style={[styles.InputRemark]}></TextInput>
-                    </View>
-
-                    <View style={[styles.Button]}>
-                        <Button
-                            title="add"
-                            color="#58c0a9"
-                            onPress={backPress}
-                        />
-                    </View>
-                </ScrollView>
+    const addFood = () => {
+        let newList = [];
+            for (let i = 0; i < mc.state.foodList.length; i++) {
+                newList.push(item)
+            }
+            // alert(item.number);
+        
+            mc.setState({
+                page: "0",
+                foodList: newList.push({
+                    foodName: nameInput,
+                    number: "8",
+                    day: "day"
+                })
+            }) 
+    }
+    return (
+        <View>
+            <View style={[styles.flexs, { alignItems: 'center', height: 80 }]}>
+                <TouchableOpacity onPress={backPress}>
+                    <Image style={{ left: 20, width: 25, height: 25, resizeMode: 'contain', marginTop: 10 }} source={require('./src/img/png/返回-黑.png')}></Image>
+                </TouchableOpacity>
             </View>
-        )
+            <ScrollView>
+
+                <View style={[styles.UIBackground, { height: 60 }]}>
+                    <Text style={{ position: 'absolute', left: 5, top: 30, fontSize: 15, width: 300 }}>Type the code on the food</Text>
+                </View>
+
+                <View style={[styles.input1, { height: 120 }]}>
+                    <TextInput type="number" placeholder="code" style={[styles.InputCode]}>{mc.state.codeId}</TextInput>
+                </View>
+
+                <View style={[styles.UIBackground, { height: 100 }]}>
+                    <Text style={{ position: 'absolute', left: 5, top: 70, fontSize: 15, width: 300 }}>Type the information of the food</Text>
+                </View>
+
+                <View style={[styles.flexs, { height: 50 }]}>
+                    <Text style={[styles.TextName]}>name</Text>
+                    <TextInput
+                        style={[styles.InputName]}
+                        onChangeText={newName => setNameInput(newName)}
+                    >
+                        {mc.state.name}
+                    </TextInput>
+                </View>
+                <View style={[styles.flexs, { height: 50 }]}>
+                    <Text style={[styles.TextBestBeforeDate]}>best before date</Text>
+                    <TextInput style={[styles.InputBestBeforeDate, { right: 20 }]}></TextInput>
+                    <TextInput style={[styles.InputBestBeforeDate, { right: 85 }]}></TextInput>
+                    <TextInput style={[styles.InputBestBeforeDate, { right: 150 }]}></TextInput>
+                </View>
+                <View style={[styles.flexs, { height: 50 }]}>
+                    <Text style={[styles.TextRemark]}>remark</Text>
+                    <TextInput style={[styles.InputRemark]}></TextInput>
+                </View>
+
+                <View style={[styles.Button]}>
+                    <Button
+                        title="add"
+                        color="#58c0a9"
+                        onPress={addFood}
+                    />
+                </View>
+            </ScrollView>
+        </View>
+    )
 
 }
-
-
-
-
 
 const styles = StyleSheet.create({
 
@@ -84,14 +99,12 @@ const styles = StyleSheet.create({
         margin: 60
     },
 
-
     flexs: {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
     },
-
 
     UIBackground: {
         display: 'flex',
@@ -121,31 +134,31 @@ const styles = StyleSheet.create({
     TextName: {
         left: 20,
         fontWeight: 'bold',
-        textAlign: 'center',
         fontSize: 15,
         color: '#333333',
         marginTop: 10,
-        position: "absolute"
+        position: "absolute",
+        width: 300
     },
 
     TextBestBeforeDate: {
         left: 20,
         fontWeight: 'bold',
-        textAlign: 'center',
         fontSize: 15,
         color: '#333333',
         marginTop: 7.5,
-        position: "absolute"
+        position: "absolute",
+        width: 300
     },
 
     TextRemark: {
         left: 20,
         fontWeight: 'bold',
-        textAlign: 'center',
         fontSize: 15,
         color: '#333333',
         marginTop: 3,
-        position: "absolute"
+        position: "absolute",
+        width: 300
     },
 
     input1: {

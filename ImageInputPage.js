@@ -3,10 +3,8 @@ import {
     StyleSheet,
     View,
     Text,
-    ScrollView,
     Image,
-    TouchableOpacity,
-    Linking
+    TouchableOpacity
 } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
@@ -70,7 +68,6 @@ const ImageInputPage = () => {
     }
 
     const textPress = () => {
-        // alert("name: " + state.foodName + " id: " + mc.state.codeId)
         mc.setState(
             {
                 foodList: mc.state.foodList,
@@ -150,7 +147,8 @@ const styles = StyleSheet.create({
         right: -3,
         marginTop: 10,
         color: '#ffffff',
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
+        width: 300
     },
 
     buttonText: {
