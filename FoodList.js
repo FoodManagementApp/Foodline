@@ -16,14 +16,22 @@ import { MainContext } from './App';
 function FoodList() {
     const mc = React.useContext(MainContext);
         let listArr = [];
+        // Current date
+        let currentDate = new Date();
+
         if (mc.state.foodList.length>0){
             for( let i =0; i<mc.state.foodList.length; i++){
+                // Best before date of item i
+                let bbDate = new Date(mc.state.foodList[i].bbDate);
+                var differenceTime = bbDate.getTime() - currentDate.getTime();
+                var differenceDay = (differenceTime / (1000 * 3600 * 24)).toFixed(0);
+
                 let item = (
                 <View key = {i}>
                   <View style={[styles.flexs, { height: 80}]}>
                   <Image style={[styles.foodImage]} source={{uri: mc.state.foodList[i].imageUrl}}></Image>
                   <Text style={[styles.TitleName]}>{mc.state.foodList[i].foodName}</Text>
-                  <Text style={[styles.Number]}>{mc.state.foodList[i].number}</Text>
+                  <Text style={[styles.Number]}>{differenceDay}</Text>
                   <Text style={[styles.Days]}>{mc.state.foodList[i].number=="1"?"day":"days"}</Text>
                   <Image style={[styles.Process]} source={require('./src/img/png/进度条.png')}></Image>
 

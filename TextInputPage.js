@@ -34,7 +34,8 @@ const TextInputPage = () => {
                 {
                     foodName: nameInput,
                     number: "80",
-                    imageUrl: mc.state.imageUrl
+                    imageUrl: mc.state.imageUrl,
+                    bbDate: date
                 }
             )
             mc.setState({
@@ -89,7 +90,6 @@ const TextInputPage = () => {
                         onConfirm={(date) => {
                             setOpen(false)
                             setDate(date)
-                            alert(typeof(date))
                         }}
                         onCancel={() => {
                             setOpen(false)
