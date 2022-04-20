@@ -5,12 +5,13 @@ import {
   Text,
   ScrollView,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import TextInputPage from './TextInputPage';
 import ImageInputPage from './ImageInputPage';
 import FoodList from './FoodList';
 import { MainContext } from './App';
+import LinearGradient from 'react-native-linear-gradient';
 
 const MainPage = () => {
 
@@ -40,7 +41,6 @@ const MainPage = () => {
             <Text style={{ color: '#58c0a9', textAlignVertical: 'center' }}>scan </Text>
           </View>
         </TouchableOpacity>
-
         <TouchableOpacity onPress={mainPress}>
           <View style={{ flexDirection: 'row', borderStyle: 'solid', borderColor: '#bcbcbc', borderWidth: 1, borderLeftWidth: 0.5, borderTopRightRadius: 10, borderBottomRightRadius: 10 }}>
             <Text style={{ color: '#58c0a9', textAlignVertical: 'center' }}> write</Text>
@@ -65,7 +65,7 @@ const MainPage = () => {
     }else{
       return (
           <View >
-            <View style={[styles.UIBackground, { height: 120 }]}>
+            <View style={[styles.UIBackground, { height: 110 }]}>
               <Text style={styles.TitleText}>foodline</Text>
             </View>
             <ScrollView style={styles.FoodList}>
@@ -74,26 +74,30 @@ const MainPage = () => {
             {botton}
           </View>
       )
-
-    
   }
 
 }
 
 const styles = StyleSheet.create({
   UIBackground: {
-    backgroundColor: '#f2f2f2',
+    display: 'flex',
+    aligItems: 'center',
+    minHeight: 100,
+    backgroundColor: '#d8eddf',
     alignItems: 'center'
   },
 
   FoodList: {
-    height: 500
+    position: 'relative',
+    height: 500,
+    display: 'flex',
   },
 
   TitleText: {
-    fontWeight: 'bold',
+    fontFamily: 'Lucida Calligraphy',
     textAlign: 'center',
-    marginTop: 10
+    marginTop: 30,
+    fontSize: 20,
   },
 
   InputChoiceImage: {
@@ -104,8 +108,6 @@ const styles = StyleSheet.create({
 
   InputChoiceBox: {
     top: -100,
-    // borderStyle: 'solid',
-    // borderWidth: 2,
     flexDirection: 'row',
     borderRadius: 9,
   }

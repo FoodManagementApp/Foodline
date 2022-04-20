@@ -27,13 +27,13 @@ const TextInputPage = () => {
             <View>
                 <View style={[styles.flexs, { alignItems: 'center', height: 80 }]}>
                     <TouchableOpacity onPress={backPress}>
-                        <Image style={{ left: 20, width: 25, height: 25, resizeMode: 'contain', marginTop: 10 }} source={require('./src/img/png/返回-黑.png')}></Image>
+                        <Image style={{ left: 20, width: 25, height: 25, resizeMode: 'contain', marginTop: 10}} source={require('./src/img/png/返回-黑.png')}></Image>
                     </TouchableOpacity>
                 </View>
                 <ScrollView>
 
                     <View style={[styles.UIBackground, { height: 60 }]}>
-                        <Text style={{ top: 30, fontSize: 15 }}>Type the code on the food</Text>
+                        <Text style={{ position:'absolute', left: 5, top: 30, fontSize: 15 }}>Type the code on the food</Text>
                     </View>
 
                     <View style={[styles.input1, { height: 120 }]}>
@@ -42,7 +42,7 @@ const TextInputPage = () => {
 
                     <View style={[styles.UIBackground, { height: 100 }]}>
                         <Text style={[styles.Or]}>Or</Text>
-                        <Text style={{ top: 30, fontSize: 15 }}>Type the information of the food</Text>
+                        <Text style={{ position: 'absolute', left: 5, top: 70, fontSize: 15 }}>Type the information of the food</Text>
                     </View>
 
                     <View style={[styles.flexs, { height: 50 }]}>
@@ -51,9 +51,9 @@ const TextInputPage = () => {
                     </View>
                     <View style={[styles.flexs, { height: 50 }]}>
                         <Text style={[styles.TextBestBeforeDate]}>best before date</Text>
-                        <TextInput style={[styles.InputBestBeforeDate, { right: -20, }]}></TextInput>
-                        <TextInput style={[styles.InputBestBeforeDate, { right: 0, }]}></TextInput>
-                        <TextInput style={[styles.InputBestBeforeDate, { right: 20, }]}></TextInput>
+                        <TextInput style={[styles.InputBestBeforeDate, { right: 20 }]}></TextInput>
+                        <TextInput style={[styles.InputBestBeforeDate, { right: 85 }]}></TextInput>
+                        <TextInput style={[styles.InputBestBeforeDate, { right: 150 }]}></TextInput>
                     </View>
                     <View style={[styles.flexs, { height: 50 }]}>
                         <Text style={[styles.TextRemark]}>remark</Text>
@@ -110,11 +110,12 @@ const styles = StyleSheet.create({
     },
 
     Or: {
+        position: 'relative',
         fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 20,
         color: '#333333',
-        marginTop: 10
+        marginTop: 20,
     },
 
     TextName: {
@@ -123,7 +124,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 15,
         color: '#333333',
-        marginTop: 10
+        marginTop: 10,
+        position: "absolute"
     },
 
     TextBestBeforeDate: {
@@ -132,7 +134,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 15,
         color: '#333333',
-        marginTop: 7.5
+        marginTop: 7.5,
+        position: "absolute"
     },
 
     TextRemark: {
@@ -141,7 +144,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 15,
         color: '#333333',
-        marginTop: 3
+        marginTop: 3,
+        position: "absolute"
     },
 
     input1: {
@@ -150,7 +154,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        margin: 'auto'
+        margin: 'auto',
     },
 
     InputName: {
@@ -163,7 +167,8 @@ const styles = StyleSheet.create({
         borderColor: '#f2f2f2',
         fontSize: 10,
         color: '#58c0a9',
-        marginTop: 10
+        marginTop: 10,
+        position: "absolute"
     },
 
     InputBestBeforeDate: {
@@ -175,7 +180,8 @@ const styles = StyleSheet.create({
         borderColor: '#f2f2f2',
         fontSize: 10,
         color: '#58c0a9',
-        marginTop: 7.5
+        marginTop: 7.5,
+        position: "absolute"
     },
 
     InputRemark: {
@@ -188,17 +194,20 @@ const styles = StyleSheet.create({
         borderColor: '#f2f2f2',
         fontSize: 10,
         color: '#58c0a9',
-        marginTop: 3
+        marginTop: 3,
+        position: "absolute"
     },
 
     FoodList: {
-        height: 420
+        height: 420,
+        position: "absolute"
     },
 
     TitleText: {
         fontWeight: 'bold',
         textAlign: 'center',
-        marginTop: 10
+        marginTop: 10,
+        position: "absolute"
     }
 
 })

@@ -5,9 +5,13 @@ import {
     Text,
     ScrollView,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    TextInput,
+    StatusBar, 
+    Modal,
 } from 'react-native';
 import { MainContext } from './App';
+import px,{px2dp} from 'react-native-px2dp';
 
 function FoodList() {
     const mc = React.useContext(MainContext);
@@ -17,11 +21,21 @@ function FoodList() {
                 let item = (
                 <View key = {i}>
                   <View style={[styles.flexs, { height: 80}]}>
-                  <Image style={{ left: 50, width: 50, height: 50, resizeMode: 'contain'}} source={require('./src/img/png/返回-黑.png')}></Image>
+                  <Image style={[styles.foodImage]} source={require('./src/img/jpg/apple.jpg')}></Image>
                   <Text style={[styles.TitleName]}>{mc.state.foodList[i].foodName}</Text>
                   <Text style={[styles.Number]}>{mc.state.foodList[i].number}</Text>
                   <Text style={[styles.Days]}>{mc.state.foodList[i].day}</Text>
-                  <Image style={{ left: -60, width: 300, height: 50, marginTop: 40, resizeMode: 'contain'}} source={require('./src/img/png/进度条.png')}></Image>
+                  <Image style={[styles.Process]} source={require('./src/img/png/进度条.png')}></Image>
+
+                    {/* <View style={styles.container}>
+                    <View style={[styles.pre]}>
+                    <View style={[styles.preOisn, { width: px2dp(213) * (80 / 100) }]}></View>
+                    <View style={[styles.preMain,{justifyContent: 'flex-end'}]}>
+                    <Text style={{ color: '#FF0000', fontSize: px2dp(14)}}>{80}%</Text>
+                    </View>
+                    </View>
+                    </View> */}
+
                   </View>
                 </View>
                 )
@@ -37,12 +51,18 @@ function FoodList() {
         </View>
     )
 
-
-
-    
 }
 
+
+
 const styles = StyleSheet.create({
+
+    foodImage: {
+        display: 'flex',
+        position: 'absolute',
+        left: 10,
+        width: 50, height: 50, resizeMode: 'contain'
+    },
 
     flexs: {
         display: 'flex',
@@ -52,37 +72,84 @@ const styles = StyleSheet.create({
     },
 
     TitleName: {
-        left: 68,
+        position: 'absolute',
+        left: 100,
         fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 20,
         color: '#333333',
-        marginTop: 20,
-        height: 70
+        marginTop: 10,
+        height: 70,
     },
 
     Number: {
-        left: 230,
+        position: 'absolute',
+        right: 80,
         fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 30,
         color: '#333333',
         marginTop: 20,
         height: 70
-
     },
 
+
     Days: {
-        left: 240,
+        position: 'absolute',
+        right: 30,
         fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 20,
         color: '#233333',
         marginTop: 10,
         height: 50
+    },
 
-    }
+    Process: {
+        right: 30, width: 250, height: 50, top: 30, resizeMode: 'contain',
+        position: 'absolute'
+    },
 
+    
+
+
+    // container: {
+    //     flex: 1,
+    //     backgroundColor: '#333333',
+    // },
+    // pre: {
+    //     flexDirection: 'row',
+    //     justifyContent: 'space-between',
+    //     alignItems: 'center',
+    //     // borderWidth: Pixel,
+    //     borderColor: '#FFB1B1',
+    //     width: px2dp(213),
+    //     height: px2dp(20),
+    //     borderRadius: px2dp(20),
+    //     paddingLeft: px2dp(10),
+    //     paddingRight: px2dp(10),
+    //     marginBottom: px2dp(10),
+    //     marginTop: px2dp(10),
+    //     position: 'relative',
+    //     overflow: 'hidden',
+    // },
+    // preMain: {
+    //     flexDirection: 'row',
+    //     justifyContent: 'space-between',
+    //     alignItems: 'center',
+    //     height: 20,
+    //     position: 'relative',
+    //     flex: 1,
+    //     zIndex: 9
+    // },
+    // preOisn: {
+    //     position: 'absolute',
+    //     height: px2dp(20),
+    //     backgroundColor: '#FFCFCF',
+    //     borderBottomLeftRadius: px2dp(2000),
+    //     borderTopLeftRadius: px2dp(2000),
+    //     zIndex: 8
+    // },
 
 
 })
