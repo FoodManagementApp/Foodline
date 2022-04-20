@@ -17,11 +17,11 @@ function FoodList() {
     const mc = React.useContext(MainContext);
         let listArr = [];
         if (mc.state.foodList.length>0){
-            for( let i =1; i<mc.state.foodList.length; i++){
+            for( let i =0; i<mc.state.foodList.length; i++){
                 let item = (
                 <View key = {i}>
                   <View style={[styles.flexs, { height: 80}]}>
-                  <Image style={[styles.foodImage]} source={require('./src/img/jpg/apple.jpg')}></Image>
+                  <Image style={[styles.foodImage]} source={{uri: mc.state.imageUrl}}></Image>
                   <Text style={[styles.TitleName]}>{mc.state.foodList[i].foodName}</Text>
                   <Text style={[styles.Number]}>{mc.state.foodList[i].number}</Text>
                   <Text style={[styles.Days]}>{mc.state.foodList[i].day}</Text>

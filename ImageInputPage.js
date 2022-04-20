@@ -15,11 +15,8 @@ import { MainContext } from './App';
 const ImageInputPage = () => {
 
     const mc = React.useContext(MainContext);
-    // const [state, setState] = React.useState({});
 
     const onSuccess = e => {
-        // code id
-
         const url = `https://world.openfoodfacts.org/api/v2/product/${e.data}.json`
         fetch(url, {
             method: 'GET',
@@ -31,10 +28,6 @@ const ImageInputPage = () => {
         })
         .then((response) => response.json())
         .then((responseData) => {
-            // setState({
-            //     name : responseData.product.product_name,
-            //     imageUrl : responseData.product.image_url
-            // })
             mc.setState(
                 {
                     foodList: mc.state.foodList,
@@ -45,20 +38,12 @@ const ImageInputPage = () => {
                 }
             )
         });
+        alert(mc.state.imageUrl)
 
-        // mc.setState(
-        //     {
-        //         foodList: mc.state.foodList,
-        //         codeId : e.data,
-        //         page: "1"
-        //     }
-        // )
-      
     };
 
 
     const backPress = () => {
-        // alert("name: " + state.foodName + " id: " + mc.state.codeId)
         mc.setState(
             {
                 foodList: mc.state.foodList,

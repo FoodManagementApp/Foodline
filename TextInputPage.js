@@ -25,17 +25,18 @@ const TextInputPage = () => {
     const addFood = () => {
         let newList = [];
             for (let i = 0; i < mc.state.foodList.length; i++) {
-                newList.push(item)
+                newList.push(mc.state.foodList[i])
             }
-            // alert(item.number);
-        
-            mc.setState({
-                page: "0",
-                foodList: newList.push({
+            newList.push(
+                {
                     foodName: nameInput,
                     number: "8",
                     day: "day"
-                })
+                }
+            )
+            mc.setState({
+                page: "0",
+                foodList: newList
             }) 
     }
     return (

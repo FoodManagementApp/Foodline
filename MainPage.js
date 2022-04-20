@@ -18,7 +18,6 @@ const MainPage = () => {
   const mc = React.useContext(MainContext);
 
   mainPress = () => {
-
     mc.setState({
       foodList: mc.state.foodList,
       page: "1",
