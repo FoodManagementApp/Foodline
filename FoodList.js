@@ -69,7 +69,7 @@ function FoodList() {
             )
             listArr.push(item)
         } 
-        listArr.sort(function(a,b){return a.key[2] - b.key[2]})
+        listArr.sort(function(a,b){alert(b.key.split(",")[1]) ;return a.key[2] - b.key[2]})
     } else {
         listArr = <Text style={{ textAlign: 'center' }}>nothing here</Text>
     }
