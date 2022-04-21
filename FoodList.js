@@ -28,26 +28,21 @@ function FoodList() {
                 var foodNamePreview = foodName.length>10? foodName.substring(0, 10) + "..." : foodName;
                 var imageUrl = mc.state.foodList[i].imageUrl;
                 var imagePreview = imageUrl===undefined?require("./src/img/png/carrot.png"):{uri: imageUrl};
-                foodInfo.push(foodName, bbDate.toDateString(), "remark testing")
+                var remark = mc.state.foodList[i].remark
+                var remarkPreview = remark==undefined?"No notes":remark
+                foodInfo.push(foodName, bbDate.toDateString(), remarkPreview)
                 foodInfoList.push(foodInfo)
 
                 let item = (
                 <View key = {i}>
-                <TouchableOpacity onPress={()=>{Alert.alert(foodInfoList[i][0], "Best before date: \n"+  foodInfoList[i][1] + "\nRemark:\n" + foodInfoList[i][2])}}>
+                <TouchableOpacity onPress={()=>{Alert.alert(foodInfoList[i][0], "Best before date: \n"+  foodInfoList[i][1] + "\nNotes:\n" + foodInfoList[i][2])}}>
                   <View style={[styles.flexs, { height: 80}]}>
                   <Image style={[styles.foodImage]} source={imagePreview}></Image>
                   <Text style={[styles.TitleName]}>{foodNamePreview}</Text>
                   <Text style={styles.Number}>{differenceDay}</Text>
                   <Text style={[styles.Days]}>{differenceDay<2?"day":"days"}</Text>
                   <Image style={[styles.Process]} source={require('./src/img/png/进度条.png')}></Image>
-                    {/* <View style={styles.container}>
-                    <View style={[styles.pre]}>
-                    <View style={[styles.preOisn, { width: px2dp(213) * (80 / 100) }]}></View>
-                    <View style={[styles.preMain,{justifyContent: 'flex-end'}]}>
-                    <Text style={{ color: '#FF0000', fontSize: px2dp(14)}}>{80}%</Text>
-                    </View>
-                    </View>
-                    </View> */}
+
                   </View>
                   </TouchableOpacity>
                 </View>
