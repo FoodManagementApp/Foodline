@@ -37,11 +37,11 @@ function FoodList() {
 
             var swipeoutBtns = [
                 {
-                backgroundColor: '#cc3e3f',
-                underlayColor: '#cc3e3f',
+                backgroundColor: '#fb7373',
+                underlayColor: '#fb7373',
                 title: 'delete',
                 color: "#ffffff",
-                text: 'Delete',
+                text: 'delete',
                    onPress: () => {
                     let newList = [];
                     for (let i = 0; i < mc.state.foodList.length; i++) {
