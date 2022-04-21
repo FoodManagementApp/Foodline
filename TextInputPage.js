@@ -110,6 +110,7 @@ const TextInputPage = () => {
                         onPress={addFood}
                     />
                 </View>
+                <View style={{height: 30}}></View>
             </ScrollView>
         </View>
     )

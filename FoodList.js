@@ -3,12 +3,9 @@ import {
     StyleSheet,
     View,
     Text,
-    ScrollView,
     Image,
     TouchableOpacity,
-    TextInput,
-    StatusBar, 
-    Modal,
+    Alert
 } from 'react-native';
 import { MainContext } from './App';
 //import px,{px2dp} from 'react-native-px2dp';
@@ -16,21 +13,30 @@ import { MainContext } from './App';
 function FoodList() {
     const mc = React.useContext(MainContext);
         let listArr = [];
+        let foodInfoList = [];
         // Current date
         let currentDate = new Date();
 
         if (mc.state.foodList.length>0){
             for( let i =0; i<mc.state.foodList.length; i++){
                 // Best before date of item i
+                let foodInfo = []
                 let bbDate = new Date(mc.state.foodList[i].bbDate);
                 var differenceTime = bbDate.getTime() - currentDate.getTime();
                 var differenceDay = (differenceTime / (1000 * 3600 * 24)).toFixed(0) >>> 0;
+                var foodName = mc.state.foodList[i].foodName;
+                var foodNamePreview = foodName.length>10? foodName.substring(0, 10) + "..." : foodName;
+                var imageUrl = mc.state.foodList[i].imageUrl;
+                var imagePreview = imageUrl===undefined?require("./src/img/png/carrot.png"):{uri: imageUrl};
+                foodInfo.push(foodName, bbDate.toDateString(), "remark testing")
+                foodInfoList.push(foodInfo)
 
                 let item = (
                 <View key = {i}>
+                <TouchableOpacity onPress={()=>{Alert.alert(foodInfoList[i][0], "Best before date: \n"+  foodInfoList[i][1] + "\nRemark:\n" + foodInfoList[i][2])}}>
                   <View style={[styles.flexs, { height: 80}]}>
-                  <Image style={[styles.foodImage]} source={{uri: mc.state.foodList[i].imageUrl}}></Image>
-                  <Text style={[styles.TitleName]}>{mc.state.foodList[i].foodName}</Text>
+                  <Image style={[styles.foodImage]} source={imagePreview}></Image>
+                  <Text style={[styles.TitleName]}>{foodNamePreview}</Text>
                   <Text style={styles.Number}>{differenceDay}</Text>
                   <Text style={[styles.Days]}>{differenceDay<2?"day":"days"}</Text>
                   <Image style={[styles.Process]} source={require('./src/img/png/进度条.png')}></Image>
@@ -42,8 +48,8 @@ function FoodList() {
                     </View>
                     </View>
                     </View> */}
-
                   </View>
+                  </TouchableOpacity>
                 </View>
                 )
                 listArr.push(item)
