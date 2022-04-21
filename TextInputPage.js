@@ -42,8 +42,7 @@ const TextInputPage = () => {
       }
 
     const addFood = () => {
-
-            if(nameInput!=null&&nameInput!=""){
+            if(nameInput!=null&&nameInput!=""&&nameInput[0]!=" "){
                 if(date.getTime() - new Date().getTime()>999){
                 let newList = [];
                 for (let i = 0; i < mc.state.foodList.length; i++) {
@@ -65,7 +64,7 @@ const TextInputPage = () => {
                 alert("The food has expired or expired today~")
             }
         }else {
-            alert("Please input your food name~")
+            alert("Please input your food name~\nOr your input is illegal.")
         } 
 
 
