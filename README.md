@@ -17,6 +17,8 @@
       - `npm install react-native-permissions --save react-native link react-native-permissions`
    4. react-native-date-picker - 2022-4-20
       - `npm i react-native-date-picker`
+   5. react-native-async-storage - 2022-4-21
+      - `npm install @react-native-async-storage/async-storage`
 
 
 requirement document: [【腾讯文档】208需求池](https://docs.qq.com/sheet/DQWJ4WGh2RWdRUmt2) 
