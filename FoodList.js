@@ -9,6 +9,7 @@ import {
     Button
 } from 'react-native';
 import { MainContext } from './App';
+import Swipeout from 'react-native-swipeout';
 //import px,{px2dp} from 'react-native-px2dp';
 
 function FoodList() {
@@ -34,8 +35,28 @@ function FoodList() {
             foodInfo.push(foodName, bbDate.toDateString(), remarkPreview)
             foodInfoList.push(foodInfo)
 
+            var swipeoutBtns = [
+                {
+                backgroundColor: '#cc3e3f',
+                underlayColor: '#cc3e3f',
+                title: 'delete',
+                color: "#ffffff",
+                text: 'Delete',
+                   onPress: () => {
+                    let newList = [];
+                    for (let i = 0; i < mc.state.foodList.length; i++) {
+                        newList.push(mc.state.foodList[i])
+                    }
+                    ; newList.splice(i, 1); mc.setState({
+                    page: "0",
+                    foodList: newList
+                    })
+                }}
+            ]
+
             let item = (
                 <View key={i}>
+                    <Swipeout right={swipeoutBtns} style = {{backgroundColor: '#ffffff'}}>
                     <TouchableOpacity onPress={() => { Alert.alert(foodInfoList[i][0], "Best before date: \n" + foodInfoList[i][1] + "\nNotes:\n" + foodInfoList[i][2]) }}>
                         <View style={[styles.flexs, { height: 80 }]}>
                             <Image style={[styles.foodImage]} source={imagePreview}></Image>
@@ -44,16 +65,7 @@ function FoodList() {
                             <Text style={[styles.Days]}>{differenceDay < 2 ? "day" : "days"}</Text>
                         </View>
                     </TouchableOpacity>
-                    <Button title='delete' onPress={() => {
-                        let newList = [];
-                        for (let i = 0; i < mc.state.foodList.length; i++) {
-                            newList.push(mc.state.foodList[i])
-                        }
-                        ; newList.splice(i, 1); mc.setState({
-                            page: "0",
-                            foodList: newList
-                        })
-                    }}></Button>
+                    </Swipeout>
                 </View>
             )
             listArr.push(item)

@@ -19,6 +19,8 @@
       - `npm i react-native-date-picker`
    5. react-native-async-storage - 2022-4-21
       - `npm install @react-native-async-storage/async-storage`
+   6. react-native-swipeout - 2022.4.21
+      - `npm install --save react-native-swipeout`
 
 
 requirement document: [【腾讯文档】208需求池](https://docs.qq.com/sheet/DQWJ4WGh2RWdRUmt2) 
