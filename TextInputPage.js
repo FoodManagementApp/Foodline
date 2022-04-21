@@ -58,16 +58,16 @@ const TextInputPage = () => {
             </View>
             <ScrollView>
 
-                <View style={[styles.UIBackground, { height: 60 }]}>
-                    <Text style={{ position: 'absolute', left: 5, top: 30, fontSize: 15, width: 300 }}>Type the code on the food</Text>
+                <View style={[styles.UIBackground, { height: 40 }]}>
+                    {/* <Text style={{ position: 'absolute', left: 5, top: 30, fontSize: 15, width: 300 }}>The code on the food</Text> */}
                 </View>
 
                 <View style={[styles.input1, { height: 120 }]}>
-                    <TextInput type="number" placeholder="code" style={[styles.InputCode]}>{mc.state.codeId}</TextInput>
+                    <TextInput type="number" placeholder="barcode" style={[styles.InputCode]}>{mc.state.codeId}</TextInput>
                 </View>
 
-                <View style={[styles.UIBackground, { height: 100 }]}>
-                    <Text style={{ position: 'absolute', left: 5, top: 70, fontSize: 15, width: 300 }}>Type the information of the food</Text>
+                <View style={[styles.UIBackground, { height: 80 }]}>
+                    <Text style={{ position: 'absolute', left: 5, top: 50, fontSize: 15, width: 300 }}>Type the information of the food</Text>
                 </View>
 
                 <View style={[styles.flexs, { height: 50 }]}>
