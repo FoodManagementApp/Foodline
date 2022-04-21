@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import { MainContext } from './App';
 import Swipeout from 'react-native-swipeout';
-//import px,{px2dp} from 'react-native-px2dp';
 
 function FoodList() {
     const mc = React.useContext(MainContext);
@@ -55,7 +54,7 @@ function FoodList() {
             ]
 
             let item = (
-                <View key={i}>
+                <View key={[i, parseInt(differenceDay)]}>
                     <Swipeout right={swipeoutBtns} style = {{backgroundColor: '#ffffff'}}>
                     <TouchableOpacity onPress={() => { Alert.alert(foodInfoList[i][0], "Best before date: \n" + foodInfoList[i][1] + "\nNotes:\n" + foodInfoList[i][2]) }}>
                         <View style={[styles.flexs, { height: 80 }]}>
@@ -69,7 +68,8 @@ function FoodList() {
                 </View>
             )
             listArr.push(item)
-        }
+        } 
+        listArr.sort(function(a,b){return a.key[2] - b.key[2]})
     } else {
         listArr = <Text style={{ textAlign: 'center' }}>nothing here</Text>
     }
@@ -82,8 +82,6 @@ function FoodList() {
     )
 
 }
-
-
 
 const styles = StyleSheet.create({
 
@@ -122,7 +120,6 @@ const styles = StyleSheet.create({
         width: 100,
         textAlign: 'right',
     },
-
 
     BigNumber: {
         position: 'absolute',
