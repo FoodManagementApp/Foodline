@@ -31,8 +31,8 @@ function FoodList() {
                   <View style={[styles.flexs, { height: 80}]}>
                   <Image style={[styles.foodImage]} source={{uri: mc.state.foodList[i].imageUrl}}></Image>
                   <Text style={[styles.TitleName]}>{mc.state.foodList[i].foodName}</Text>
-                  <Text style={[styles.Number]}>{differenceDay}</Text>
-                  <Text style={[styles.Days]}>{mc.state.foodList[i].number=="1"?"day":"days"}</Text>
+                  <Text style={differenceDay>99?styles.BigNumber:styles.Number}>{differenceDay}</Text>
+                  <Text style={[styles.Days]}>{differenceDay<2?"day":"days"}</Text>
                   <Image style={[styles.Process]} source={require('./src/img/png/进度条.png')}></Image>
 
                     {/* <View style={styles.container}>
@@ -50,12 +50,13 @@ function FoodList() {
                 listArr.push(item)
         }
         } else {
-            listArr = <Text>nothing here</Text>
+            listArr = <Text style={{textAlign: 'center'}}>nothing here</Text>
         }
 
     return (
         <View>
             {listArr} 
+            <View style={{height:100}}></View>
         </View>
     )
 
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
 
     Number: {
         position: 'absolute',
-        right: 20,
+        right: 5,
         fontWeight: 'bold',
         fontSize: 30,
         color: '#333333',
@@ -99,6 +100,19 @@ const styles = StyleSheet.create({
         height: 70,
         width: 100
     },
+
+
+    BigNumber: {
+        position: 'absolute',
+        right: 20,
+        fontWeight: 'bold',
+        fontSize: 25,
+        color: '#333333',
+        marginTop: 20,
+        height: 60,
+        width: 100
+    },
+
 
     Days: {
         position: 'absolute',

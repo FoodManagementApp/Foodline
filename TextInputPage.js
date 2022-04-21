@@ -26,14 +26,14 @@ const TextInputPage = () => {
     }
 
     const addFood = () => {
-        let newList = [];
+        if(nameInput!=null&&nameInput!=""&&date!=null){
+            let newList = [];
             for (let i = 0; i < mc.state.foodList.length; i++) {
                 newList.push(mc.state.foodList[i])
             }
             newList.push(
                 {
                     foodName: nameInput,
-                    number: "80",
                     imageUrl: mc.state.imageUrl,
                     bbDate: date
                 }
@@ -42,6 +42,10 @@ const TextInputPage = () => {
                 page: "0",
                 foodList: newList
             }) 
+        } else {
+            alert("Please input your food name~")
+        }
+
     }
     return (
         <View>
