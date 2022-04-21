@@ -31,10 +31,9 @@ function FoodList() {
                   <View style={[styles.flexs, { height: 80}]}>
                   <Image style={[styles.foodImage]} source={{uri: mc.state.foodList[i].imageUrl}}></Image>
                   <Text style={[styles.TitleName]}>{mc.state.foodList[i].foodName}</Text>
-                  <Text style={differenceDay>99?styles.BigNumber:styles.Number}>{differenceDay}</Text>
+                  <Text style={styles.Number}>{differenceDay}</Text>
                   <Text style={[styles.Days]}>{differenceDay<2?"day":"days"}</Text>
                   <Image style={[styles.Process]} source={require('./src/img/png/进度条.png')}></Image>
-
                     {/* <View style={styles.container}>
                     <View style={[styles.pre]}>
                     <View style={[styles.preOisn, { width: px2dp(213) * (80 / 100) }]}></View>
@@ -92,13 +91,14 @@ const styles = StyleSheet.create({
 
     Number: {
         position: 'absolute',
-        right: 5,
+        right: 85,
         fontWeight: 'bold',
         fontSize: 30,
         color: '#333333',
         marginTop: 20,
         height: 70,
-        width: 100
+        width: 100,
+        textAlign: 'right',
     },
 
 

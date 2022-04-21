@@ -64,7 +64,7 @@ const ImageInputPage = () => {
         return (
 
             <View style={{ backgroundColor: '#222222' }}>
-                <View style={[styles.flexs, { height: 80 }]}>
+                <View style={[styles.flexs, { height: 100 }]}>
                     <TouchableOpacity onPress={backPress}>
                         <Image style={[styles.imageBack]} source={require('./src/img/png/返回.png')}></Image>
                     </TouchableOpacity>
@@ -152,15 +152,15 @@ const styles = StyleSheet.create({
     viewCameraFunction: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#e4e0d8',
-        height: 550
+        backgroundColor: '#ffffff',
+        height: 480,
+        padding: 0
     },
 
     viewReminder: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#e4e0d8',
-        height: 100,
+        height: 150,
         backgroundColor: '#222222'
     },
 
