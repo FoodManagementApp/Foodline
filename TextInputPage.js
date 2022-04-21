@@ -116,7 +116,7 @@ const TextInputPage = () => {
                     />
                 </View>
                 <View style={[styles.flexs, { height: 50 }]}>
-                    <Text style={[styles.TextRemark]}>remark</Text>
+                    <Text style={[styles.TextRemark]}>notes</Text>
                     <TextInput 
                         style={[styles.InputRemark]}
                         onChangeText={newRemark => setRemark(newRemark)}
