@@ -38,7 +38,7 @@ function FoodList() {
                 {
                 backgroundColor: '#fb7373',
                 underlayColor: '#fb7373',
-                title: 'delete',
+                title: 'Delete',
                 color: "#ffffff",
                 text: 'delete',
                    onPress: () => {
