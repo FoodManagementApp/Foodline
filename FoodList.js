@@ -40,7 +40,7 @@ function FoodList() {
                 underlayColor: '#fb7373',
                 title: 'Delete',
                 color: "#ffffff",
-                text: 'delete',
+                text: 'Delete',
                    onPress: () => {
                     let newList = [];
                     for (let i = 0; i < mc.state.foodList.length; i++) {
