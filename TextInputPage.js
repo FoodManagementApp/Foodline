@@ -17,6 +17,7 @@ const TextInputPage = () => {
     const [nameInput, setNameInput] = React.useState(mc.state.name);
     const [date, setDate] = useState(new Date());
     const [open, setOpen] = useState(false);
+    const [remark, setRemark] = useState();
 
     const backPress = () => {
         mc.setState({
@@ -35,7 +36,8 @@ const TextInputPage = () => {
                 {
                     foodName: nameInput,
                     imageUrl: mc.state.imageUrl,
-                    bbDate: date
+                    bbDate: date,
+                    remark: remark
                 }
             )
             mc.setState({
@@ -100,7 +102,10 @@ const TextInputPage = () => {
                 </View>
                 <View style={[styles.flexs, { height: 50 }]}>
                     <Text style={[styles.TextRemark]}>remark</Text>
-                    <TextInput style={[styles.InputRemark]}></TextInput>
+                    <TextInput 
+                        style={[styles.InputRemark]}
+                        onChangeText={newRemark => setRemark(newRemark)}
+                    ></TextInput>
                 </View>
 
                 <View style={[styles.Button]}>
