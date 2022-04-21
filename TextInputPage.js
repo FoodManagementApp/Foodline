@@ -42,26 +42,33 @@ const TextInputPage = () => {
       }
 
     const addFood = () => {
-        if(nameInput!=null&&nameInput!=""&&date!=null){
-            let newList = [];
-            for (let i = 0; i < mc.state.foodList.length; i++) {
-                newList.push(mc.state.foodList[i])
-            }
-            newList.push(
-                {
-                    foodName: nameInput,
-                    imageUrl: mc.state.imageUrl,
-                    bbDate: date,
-                    remark: remark
+
+            if(nameInput!=null&&nameInput!=""){
+                if(date.getTime() - new Date().getTime()>999){
+                let newList = [];
+                for (let i = 0; i < mc.state.foodList.length; i++) {
+                    newList.push(mc.state.foodList[i])
                 }
-            )
-            mc.setState({
-                page: "0",
-                foodList: newList
-            }) 
-        } else {
+                newList.push(
+                    {
+                        foodName: nameInput,
+                        imageUrl: mc.state.imageUrl,
+                        bbDate: date,
+                        remark: remark
+                    }
+                )
+                mc.setState({
+                    page: "0",
+                    foodList: newList
+                }) 
+            } else {
+                alert("The food has expired or expired today~")
+            }
+        }else {
             alert("Please input your food name~")
-        }
+        } 
+
+
 
     }
     return (
