@@ -43,7 +43,7 @@ function FoodList() {
             let bbDate = new Date(mc.state.foodList[i].bbDate);
             let addDate = new Date(mc.state.foodList[i].addDate);
             var differenceTime = bbDate.getTime() - currentDate.getTime();
-            var differenceDay = (differenceTime / (1000 * 3600 * 24)).toFixed(0) >>> 0;
+            var differenceDay = (differenceTime / (1000 * 3600 * 24)).toFixed(0);
             var foodName = mc.state.foodList[i].foodName;
             var foodNamePreview = foodName.length > 10 ? foodName.substring(0, 10) + "..." : foodName;
             var imageUrl = mc.state.foodList[i].imageUrl;
@@ -74,14 +74,14 @@ function FoodList() {
             ]
 
             let item = (
-                <View key={[i, parseInt(differenceDay)]}>
+                <View key={[i, differenceDay]}>
                     <Swipeout right={swipeoutBtns} style = {{backgroundColor: '#ffffff'}}>
                     <TouchableOpacity onPress={() => {showDetails(i)}}>
                         <View style={[styles.flexs, { height: 80 }]}>
                             <Image style={[styles.foodImage]} source={imagePreview}></Image>
                             <Text style={[styles.TitleName]}>{foodNamePreview}</Text>
-                            <Text style={styles.Number}>{differenceDay}</Text>
-                            <Text style={[styles.Days]}>{differenceDay < 2 ? "day" : "days"}</Text>
+                            <Text style= {differenceTime>0 ? styles.Number : styles.expiredNumber}>{differenceTime>0 ? differenceDay : -differenceDay}</Text>
+                            <Text style={[styles.Days]}>{(differenceDay < 2 && differenceDay > -2)? "day" : "days"}</Text>
                         </View>
                     </TouchableOpacity>
                     </Swipeout>
@@ -162,6 +162,18 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 30,
         color: '#333333',
+        marginTop: 20,
+        height: 70,
+        width: 100,
+        textAlign: 'right',
+    },
+
+    expiredNumber: {
+        position: 'absolute',
+        right: 85,
+        fontWeight: 'bold',
+        fontSize: 30,
+        color: '#ff0000',
         marginTop: 20,
         height: 70,
         width: 100,

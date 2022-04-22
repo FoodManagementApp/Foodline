@@ -28,8 +28,8 @@ const TextInputPage = () => {
     }
 
     const addFood = () => {
-            if(nameInput!=null&&nameInput!=""&&nameInput[0]!=" "){
-                if(date.getTime() - new Date().getTime()>999){
+        if(nameInput!=null&&nameInput!=""&&nameInput[0]!=" "){
+            if(date.getTime() - new Date().getTime()>999){
                 let newList = [];
                 for (let i = 0; i < mc.state.foodList.length; i++) {
                     newList.push(mc.state.foodList[i])
