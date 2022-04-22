@@ -100,7 +100,7 @@ function FoodList() {
                             <View style={styles.modalView}>
                                 <Image style={[styles.detailsImage]} source={imagePreview}></Image>
                                 <Text style={styles.detailsNameText}>{foodInfoList[i][0]}</Text>
-                                <Text style={styles.detailsAddDateText}>Add Date: {foodInfoList[i][1]}</Text>
+                                <Text style={styles.detailsAddDateText}>Date Added: {foodInfoList[i][1]}</Text>
                                 <Text style={styles.detailsBBDText}>Best Before Date: {foodInfoList[i][2]}</Text>
                                 <Text style={styles.detailsNoteText}>Notes: {foodInfoList[i][3]}</Text>
                                 <View style={[styles.buttonContainer]}>
