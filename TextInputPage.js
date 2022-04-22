@@ -18,6 +18,7 @@ const TextInputPage = () => {
     const [date, setDate] = useState(new Date());
     const [open, setOpen] = useState(false);
     const [remark, setRemark] = useState();
+    const [addDate, setAddDate] = useState(new Date()); 
 
     const backPress = () => {
         mc.setState({
@@ -38,13 +39,15 @@ const TextInputPage = () => {
                         foodName: nameInput,
                         imageUrl: mc.state.imageUrl,
                         bbDate: date,
+                        addDate: addDate,
                         remark: remark
                     }
                 )
                 mc.setState({
                     page: "0",
                     foodList: newList
-                }) 
+                })
+                setAddDate(new Date()) 
             } else {
                 alert("The food has expired or expired today~")
             }

@@ -6,6 +6,7 @@ import {
     Image,
     TouchableOpacity,
     Modal,
+    Button,
     Pressable
 } from 'react-native';
 import { MainContext } from './App';
@@ -41,6 +42,7 @@ function FoodList() {
         for (let i = 0; i < mc.state.foodList.length; i++) {
             let foodInfo = []
             let bbDate = new Date(mc.state.foodList[i].bbDate);
+            let addDate = new Date(mc.state.foodList[i].addDate);
             var differenceTime = bbDate.getTime() - currentDate.getTime();
             var differenceDay = (differenceTime / (1000 * 3600 * 24)).toFixed(0) >>> 0;
             var foodName = mc.state.foodList[i].foodName;
@@ -49,7 +51,7 @@ function FoodList() {
             var imagePreview = imageUrl === undefined ? require("./src/img/png/carrot.png") : { uri: imageUrl };
             var remark = mc.state.foodList[i].remark
             var remarkPreview = remark == undefined ? "No notes" : remark
-            foodInfo.push(foodName, bbDate.toDateString(), remarkPreview)
+            foodInfo.push(foodName, addDate.toDateString(), bbDate.toDateString(), remarkPreview)
             foodInfoList.push(foodInfo)
 
             var swipeoutBtns = [
@@ -75,7 +77,6 @@ function FoodList() {
             let item = (
                 <View key={[i, parseInt(differenceDay)]}>
                     <Swipeout right={swipeoutBtns} style = {{backgroundColor: '#ffffff'}}>
-                    {/* <TouchableOpacity onPress={() => { Alert.alert(foodInfoList[i][0], "Best before date: \n" + foodInfoList[i][1] + "\nNotes:\n" + foodInfoList[i][2]) }}> */}
                     <TouchableOpacity onPress={() => {showDetails(i)}}>
                         <View style={[styles.flexs, { height: 80 }]}>
                             <Image style={[styles.foodImage]} source={imagePreview}></Image>
@@ -99,15 +100,16 @@ function FoodList() {
                             <View style={styles.modalView}>
                                 <Image style={[styles.detailsImage]} source={imagePreview}></Image>
                                 <Text style={styles.detailsNameText}>{foodInfoList[i][0]}</Text>
-                                <Text style={styles.detailsBBDText}>Best before date: {foodInfoList[i][1]}</Text>
-                                <Text style={styles.detailsNoteText}>Notes: {foodInfoList[i][2]}</Text>
-
-                                <Pressable
-                                   style={[styles.button, styles.buttonClose]}
-                                   onPress={() => {hideDetails(i)}}
-                                >
-                                    <Text style={styles.textStyle}>OK</Text>
-                                </Pressable>
+                                <Text style={styles.detailsAddDateText}>Add Date: {foodInfoList[i][1]}</Text>
+                                <Text style={styles.detailsBBDText}>Best Before Date: {foodInfoList[i][2]}</Text>
+                                <Text style={styles.detailsNoteText}>Notes: {foodInfoList[i][3]}</Text>
+                                <View style={[styles.buttonContainer]}>
+                                    <Button
+                                        title="OK"
+                                        color="#58c0a9"
+                                        onPress={() => {hideDetails(i)}}
+                                    />
+                                </View>
                             </View>
                         </View>
                     </Modal>
@@ -235,16 +237,18 @@ const styles = StyleSheet.create({
     //     borderTopLeftRadius: px2dp(2000),
     //     zIndex: 8
     // },
+
     centeredView: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
         marginTop: 22
     },
+
     modalView: {
         margin: 20,
         backgroundColor: "white",
-        borderRadius: 20,
+        borderRadius: 25,
         padding: 35,
         alignItems: "center",
         shadowColor: "#000",
@@ -256,42 +260,51 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
     },
-    button: {
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2
+
+    buttonContainer: {
+        margin: 5,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        height: 40,
+        width: 100,
+        borderRadius: 20
     },
-    buttonOpen: {
-        backgroundColor: "#F194FF",
-    },
-    buttonClose: {
-        backgroundColor: "#2196F3",
-    },
-    textStyle: {
-        color: "white",
-        fontWeight: "bold",
-        textAlign: "center"
-    },
+
     detailsImage: {
         display: 'flex',
         alignItems: 'center',
-        width: 150, height: 150, resizeMode: 'contain'
+        width: 150, 
+        height: 150, 
+        resizeMode: 'contain'
     },
+
     detailsNameText: {
         marginBottom: 15,
         textAlign: "center",
         fontWeight: 'bold',
         fontSize: 25,
+        color: '#212121'
     },
+
+    detailsAddDateText: {
+        marginBottom: 15,
+        textAlign: "center",
+        fontSize: 15,
+        color: '#212121'
+    },
+
     detailsBBDText: {
         marginBottom: 15,
         textAlign: "center",
         fontSize: 15,
+        color: '#212121'
     },
+
     detailsNoteText: {
         marginBottom: 15,
         textAlign: "center",
         fontSize: 15,
+        color: '#212121'
     },
 
 })

@@ -4,7 +4,8 @@ import {
     View,
     Text,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
@@ -26,19 +27,34 @@ const ImageInputPage = () => {
         })
         .then((response) => response.json())
         .then((responseData) => {
-            mc.setState(
-                {
-                    foodList: mc.state.foodList,
-                    codeId: e.data,
-                    page: "1",
-                    name: responseData.product.product_name,
-                    imageUrl: responseData.product.image_url
-                }
-            )
+            if(responseData.status_verbose == "product not found"){
+                Alert.alert (
+                    "Product Not Found", 
+                    "\nPlease enter food details manually.",
+                    [
+                        {
+                            text: "OK",
+                            onPress: mc.setState({
+                                foodList: mc.state.foodList,
+                                page: '1'
+                            }),
+                        },
+                    ],
+                )
+            }else{
+                mc.setState(
+                    {
+                        foodList: mc.state.foodList,
+                        codeId: e.data,
+                        page: '1',
+                        name: responseData.product.product_name,
+                        imageUrl: responseData.product.image_url
+                    }
+                )
+            }
         });
 
     };
-
 
     const backPress = () => {
         mc.setState(
@@ -57,7 +73,6 @@ const ImageInputPage = () => {
             }
         )
     }
-
 
         return (
 
