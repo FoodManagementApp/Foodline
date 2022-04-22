@@ -10,13 +10,12 @@ import {
 import TextInputPage from './TextInputPage';
 import ImageInputPage from './ImageInputPage';
 import FoodList from './FoodList';
+import StoreLoader from './StoreLoader';
 import { MainContext } from './App';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-//import LinearGradient from 'react-native-linear-gradient';
 
 const MainPage = () => {
-
   const mc = React.useContext(MainContext);
 
   const getFood = async () => {
@@ -70,6 +69,10 @@ const MainPage = () => {
     } else if (mc.state.page === '2') {
       return (
           <ImageInputPage></ImageInputPage>
+      )
+    }else if (mc.state.page === '-1') {
+      return (
+          <StoreLoader></StoreLoader>
       )
     }else{
       return (

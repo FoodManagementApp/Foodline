@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     View,
     Text,
     Image,
     TouchableOpacity,
-    Alert,
-    Button,
     Modal,
     Pressable
 } from 'react-native';
 import { MainContext } from './App';
 import Swipeout from 'react-native-swipeout';
+import {storage} from './storage'
 
 function FoodList() {
     const mc = React.useContext(MainContext);
@@ -19,6 +18,10 @@ function FoodList() {
     let foodInfoList = [];
     // Current date
     let currentDate = new Date();
+
+
+    //componentDidUpdate
+    useEffect(()=>{storage.save('foodListInStorage', mc.state.foodList)}) 
 
     if (mc.state.foodList.length > 0) {
         
