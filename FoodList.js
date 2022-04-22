@@ -6,11 +6,12 @@ import {
     Image,
     TouchableOpacity,
     Modal,
+    Pressable,
     Button,
 } from 'react-native';
 import { MainContext } from './App';
 import Swipeout from 'react-native-swipeout';
-import {storage} from './storage'
+import {storage} from './storage';
 
 function FoodList() {
     const mc = React.useContext(MainContext);
@@ -18,13 +19,12 @@ function FoodList() {
     let foodInfoList = [];
     // Current date
     let currentDate = new Date();
-
+    let [sortcode,setSortcode] = useState('2');
     //componentDidUpdate
     useEffect(()=>{storage.save('foodListInStorage', mc.state.foodList)}) 
-
+    const [modalVisible, setModalVisible] = useState(false);
 
     if (mc.state.foodList.length >= 0) {
-        
         // Handle the visible of details page
         let visible = [];
         for (let j = 0; j < mc.state.foodList.length; j++) {visible.push(false)}
@@ -74,7 +74,7 @@ function FoodList() {
             ]
 
             let item = (
-                <View key={[i, differenceDay]}>
+                <View key={[i, differenceDay, foodName, addDate]}>
                     <Swipeout right={swipeoutBtns} style = {{backgroundColor: '#ffffff'}}>
                     <TouchableOpacity onPress={() => {showDetails(i)}}>
                         <View style={[styles.flexs, { height: 80 }]}>
@@ -118,13 +118,71 @@ function FoodList() {
             )
             listArr.push(item)
         } 
-        listArr.sort(function(a,b){return a.key.split(",")[1] - b.key.split(",")[1]})
+         
     }
-    
+    const sortfun0= () => {
+        setSortcode('0')
+        setModalVisible(!modalVisible)
+    }
+    const sortfun1= () => {
+        setSortcode('1')
+        setModalVisible(!modalVisible)
+    }
+    const sortfun2= () => {
+        setSortcode('2')
+        setModalVisible(!modalVisible)
+    }
     return (
         <View>
-            {listArr.length>0?listArr:<Text style={{ textAlign: 'center' }}>nothing here</Text>}
-            <View style={{ height: 100 }}></View>
+            {/* 0:首字母 1:添加日期 2:时间 */}
+            {listArr.length>0?(sortcode=='0'?listArr.sort(function(a,b){return a.key.split(",")[2].localeCompare(b.key.split(",")[2])}):(sortcode=='1'? listArr.sort(function(a,b){
+                var da = new Date(a.key.split(",")[3]).valueOf()
+                var db = new Date(b.key.split(",")[3]).valueOf()
+                return da-db}):listArr.sort(function(a,b){return a.key.split(",")[1] - b.key.split(",")[1]}))):<Text style={{ textAlign: 'center' }}>nothing here</Text>}
+            <View style={{ height: 100 }}>
+            </View>
+            <View style={styles.centeredView2}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView2}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Sort style</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={sortfun0}
+            >
+              <Text style={styles.textStyle}>Alphabetical Sort</Text>
+            </Pressable>
+            <Text style={styles.modalText}></Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={sortfun1}
+            >
+              <Text style={styles.textStyle}>Date Added Sort</Text>
+            </Pressable>
+            <Text style={styles.modalText}></Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={sortfun2}
+            >
+              <Text style={styles.textStyle}>Day left Sort</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+      <Pressable
+        style={[styles.button, styles.buttonOpen]}
+        onPress={() => setModalVisible(true)}
+      >
+        <Text style={styles.textStyle}>Sort data</Text>
+      </Pressable>
+    </View>
         </View>
     )
 
@@ -196,7 +254,26 @@ const styles = StyleSheet.create({
         position: 'absolute'
     },
 
-
+      button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+      },
+      buttonOpen: {
+        backgroundColor: "#58c0a9",
+      },
+      buttonClose: {
+        backgroundColor: "#58c0a9",
+      },
+      textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+      },
+      modalText: {
+        marginBottom: 15,
+        textAlign: "center"
+      },
 
 
     // container: {
@@ -242,6 +319,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginTop: 22
+    },
+
+    centeredView2: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 112
     },
 
     modalView: {
