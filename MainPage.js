@@ -69,7 +69,8 @@ const MainPage = () => {
       return (
           <View >
             <View style={[styles.UIBackground, { height: 110 }]}>
-              <Text style={styles.TitleText}>foodline</Text>
+              {/* <Text style={styles.TitleText}>foodline</Text> */}
+              <Image style={{ width: 130, height: 43, resizeMode: 'contain', top: 35 }} source={require('./src/img/png/title.png')}></Image>
             </View>
             <ScrollView style={styles.FoodList}>
               <FoodList></FoodList>
