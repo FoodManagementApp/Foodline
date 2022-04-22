@@ -99,8 +99,8 @@ function FoodList() {
                             <View style={styles.modalView}>
                                 <Image style={[styles.detailsImage]} source={imagePreview}></Image>
                                 <Text style={styles.detailsNameText}>{foodInfoList[i][0]}</Text>
-                                <Text style={styles.detailsAddDateText}>Date Added: {foodInfoList[i][1]}</Text>
                                 <Text style={styles.detailsBBDText}>Best Before Date: {foodInfoList[i][2]}</Text>
+                                <Text style={styles.detailsAddDateText}>Date Added: {foodInfoList[i][1]}</Text>
                                 <Text style={styles.detailsNoteText}>Notes: {foodInfoList[i][3]}</Text>
                                 <View style={[styles.buttonContainer]}>
                                     <Button
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
         right: 85,
         fontWeight: 'bold',
         fontSize: 30,
-        color: '#ff0000',
+        color: '#fb7373',
         marginTop: 20,
         height: 70,
         width: 100,
