@@ -1,6 +1,7 @@
 
-import {AsyncStorage} from 'react-native'
-import Storage from 'react-native-storage'
+import { AsyncStorage } from 'react-native';
+import Storage from 'react-native-storage';
+import StoreLoader from './StoreLoader';
 
 let storage = undefined
 let defaultExpires = null
@@ -23,6 +24,7 @@ const initStorage = () => {
 }
 
 const _storage = {
+  //save
   save(key, obj) {
     initStorage()
     storage.save({
@@ -32,8 +34,8 @@ const _storage = {
     })
   },
 
-  // 取数据
-  load(key, callBack) {
+  // load
+  load(key, pageSwicher,callBack) {
     initStorage()
     storage.load({
       key: key,
@@ -45,7 +47,6 @@ const _storage = {
         someFlag: true,
       }
     }).then(ret => {
-
       callBack && callBack(ret)
       return ret
     }).catch(err => {
@@ -53,6 +54,7 @@ const _storage = {
       console.warn(err.message);
       switch (err.name) {
         case 'NotFoundError':
+          pageSwicher()
           break
         case 'ExpiredError':
           break
@@ -91,4 +93,4 @@ const _storage = {
   }
 }
 
-export {_storage as storage}
+export { _storage as storage }
