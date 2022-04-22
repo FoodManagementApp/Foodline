@@ -7,7 +7,6 @@ import {
     TouchableOpacity,
     Modal,
     Button,
-    Pressable
 } from 'react-native';
 import { MainContext } from './App';
 import Swipeout from 'react-native-swipeout';
@@ -168,18 +167,6 @@ const styles = StyleSheet.create({
         width: 100,
         textAlign: 'right',
     },
-
-    BigNumber: {
-        position: 'absolute',
-        right: 20,
-        fontWeight: 'bold',
-        fontSize: 25,
-        color: '#333333',
-        marginTop: 20,
-        height: 60,
-        width: 100
-    },
-
 
     Days: {
         position: 'absolute',
