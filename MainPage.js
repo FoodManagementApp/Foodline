@@ -12,19 +12,10 @@ import ImageInputPage from './ImageInputPage';
 import FoodList from './FoodList';
 import StoreLoader from './StoreLoader';
 import { MainContext } from './App';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const MainPage = () => {
   const mc = React.useContext(MainContext);
-
-  const getFood = async () => {
-    try {
-      const foodValue = await AsyncStorage.getItem('food')
-      mc.state.foodList = JSON.parse(foodValue)
-    } catch(e) {
-    }
-  }
 
   mainPress = () => {
     mc.setState({
@@ -57,7 +48,7 @@ const MainPage = () => {
         </TouchableOpacity>
 
       </View>
-      <TouchableOpacity onPress={getFood}>
+      <TouchableOpacity onPress={mainPress}>
         <Image style={{ width: 45, height: 45, resizeMode: 'contain', top: -10 }} source={require('./src/img/png/carrot.png')}></Image>
       </TouchableOpacity>
     </View>

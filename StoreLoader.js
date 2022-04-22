@@ -11,7 +11,7 @@ const StoreLoader = () => {
     //componentDidMount
     useEffect(() => {
         storage.load('foodListInStorage', (data) => {
-            mc.setState({ foodList: data, page: "0", codeId: undefined, name: " ", imageUrl: ' ' })
+            mc.setState({ foodList: data==undefined?[]:data, page: "0", codeId: undefined, name: " ", imageUrl: ' ' })
           })
       }, []);
 

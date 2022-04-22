@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { MainContext } from './App';
 import DatePicker from 'react-native-date-picker';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const TextInputPage = () => {
     const mc = React.useContext(MainContext);
@@ -26,20 +25,6 @@ const TextInputPage = () => {
             foodList: mc.state.foodList
         })
     }
-
-    const setFood = () => {
-        const foodValue = JSON.stringify(mc.state.foodList)
-        AsyncStorage.setItem('food', foodValue)
-        alert(JSON.stringify(foodValue))
-     }
-      
-    const getFood = async () => {
-        try {
-          const foodValue = await AsyncStorage.getItem('food')
-          mc.state.foodList = JSON.parse(foodValue)
-        } catch(e) {
-        }
-      }
 
     const addFood = () => {
             if(nameInput!=null&&nameInput!=""&&nameInput[0]!=" "){
@@ -66,8 +51,6 @@ const TextInputPage = () => {
         }else {
             alert("Please input your food name~\nOr your input is illegal.")
         } 
-
-
 
     }
     return (
@@ -105,8 +88,6 @@ const TextInputPage = () => {
                     <View style={[styles.selectDateButton]}>
                     <Button title="Select Date" color="#58c0a9" onPress={() => setOpen(true)}/>
                     </View>
-
-
                     <DatePicker
                         modal
                         open={open}
@@ -134,20 +115,6 @@ const TextInputPage = () => {
                         title="add"
                         color="#58c0a9"
                         onPress={addFood}
-                    />
-                </View>
-                <View style={[styles.Button]}>
-                    <Button
-                        title="save"
-                        color="#58c0a9"
-                        onPress={setFood}
-                    />
-                </View>
-                <View style={[styles.Button]}>
-                    <Button
-                        title="load"
-                        color="#58c0a9"
-                        onPress={getFood}
                     />
                 </View>
                 <View style={{height: 30}}></View>

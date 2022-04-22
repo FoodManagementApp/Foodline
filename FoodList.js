@@ -19,11 +19,11 @@ function FoodList() {
     // Current date
     let currentDate = new Date();
 
-
     //componentDidUpdate
     useEffect(()=>{storage.save('foodListInStorage', mc.state.foodList)}) 
 
-    if (mc.state.foodList.length > 0) {
+
+    if (mc.state.foodList.length >= 0) {
         
         // Handle the visible of details page
         let visible = [];
@@ -59,6 +59,7 @@ function FoodList() {
                 title: 'Delete',
                 color: "#ffffff",
                 text: 'Delete',
+                // Delete
                    onPress: () => {
                     let newList = [];
                     for (let i = 0; i < mc.state.foodList.length; i++) {
@@ -117,13 +118,11 @@ function FoodList() {
             listArr.push(item)
         } 
         listArr.sort(function(a,b){return a.key.split(",")[1] - b.key.split(",")[1]})
-    } else {
-        listArr = <Text style={{ textAlign: 'center' }}>nothing here</Text>
     }
-
+    
     return (
         <View>
-            {listArr}
+            {listArr.length>0?listArr:<Text style={{ textAlign: 'center' }}>nothing here</Text>}
             <View style={{ height: 100 }}></View>
         </View>
     )
