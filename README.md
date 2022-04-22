@@ -17,8 +17,8 @@
       - `npm install react-native-permissions --save react-native link react-native-permissions`
    4. react-native-date-picker - 2022-4-20
       - `npm i react-native-date-picker`
-   5. --react-native-async-storage - 2022-4-21-- abandoned
-      - `npm install @react-native-async-storage/async-storage`
+   5. ~~react-native-async-storage - 2022-4-21~~ abandoned
+      ~~- `npm install @react-native-async-storage/async-storage`
    6. react-native-swipeout - 2022.4.21
       - `npm install --save react-native-swipeout`
    7. react-native-storage  - 2022.4.22
