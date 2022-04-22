@@ -1,7 +1,6 @@
 
 import { AsyncStorage } from 'react-native';
 import Storage from 'react-native-storage';
-import StoreLoader from './StoreLoader';
 
 let storage = undefined
 let defaultExpires = null
