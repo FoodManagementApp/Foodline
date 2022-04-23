@@ -136,7 +136,6 @@ function FoodList() {
             listArr.push(item)
         }  
     }
-    console.log(foodInfoList)
     return (
         <View>
             {/* sortCode 0: initial character 1:date added 2: best before time */}
