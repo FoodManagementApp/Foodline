@@ -55,7 +55,7 @@ function FoodList() {
             foodInfo.push(foodName, addDate.toDateString(), bbDate.toDateString(), remarkPreview)
             foodInfoList.push(foodInfo)
             var barColor = '#58c0a9'
-            var dayRate = (oldleftDay-differenceDay)/oldleftDay
+            var dayRate = oldleftDay<=0?1:(oldleftDay-differenceDay)/oldleftDay
             if(dayRate>=0.9){
                 barColor = '#fb7373'
             }else if(dayRate<0.9 && dayRate>0.5){
@@ -91,11 +91,11 @@ function FoodList() {
                             <View style={[styles.flexs, { height: 80 }]}>
                                 <Image style={[styles.foodImage]} source={imagePreview}></Image>
                                 <Text style={[styles.TitleName]}>{foodNamePreview}</Text>
-                                <Text style={differenceTime > 0 ? styles.Number : styles.expiredNumber}>{differenceTime > 0 ? differenceDay : differenceDay}</Text>
+                                <Text style={differenceTime > 0 ? styles.Number : styles.expiredNumber}>{differenceDay == 0 ? 0 : differenceDay}</Text>
                                 <Text style={[styles.Days]}>{(differenceDay < 2 && differenceDay > -2) ? "day" : "days"}</Text>
                             <View style={[styles.progressBarContainer]}>
                             <ProgressBar 
-                                progress={(oldleftDay-differenceDay)/oldleftDay} 
+                                progress={dayRate} 
                                 width={220} color={barColor} />
                             </View>
                             </View>
