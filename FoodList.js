@@ -91,7 +91,7 @@ function FoodList() {
                             <View style={[styles.flexs, { height: 80 }]}>
                                 <Image style={[styles.foodImage]} source={imagePreview}></Image>
                                 <Text style={[styles.TitleName]}>{foodNamePreview}</Text>
-                                <Text style={differenceTime > 0 ? styles.Number : styles.expiredNumber}>{differenceTime > 0 ? differenceDay : -differenceDay}</Text>
+                                <Text style={differenceTime > 0 ? styles.Number : styles.expiredNumber}>{differenceTime > 0 ? differenceDay : differenceDay}</Text>
                                 <Text style={[styles.Days]}>{(differenceDay < 2 && differenceDay > -2) ? "day" : "days"}</Text>
                             <View style={[styles.progressBarContainer]}>
                             <ProgressBar 
