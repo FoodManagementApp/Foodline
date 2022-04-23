@@ -72,7 +72,7 @@ const EditFoodPage = () => {
                     <Text style={[styles.TextBestBeforeDate]}>best before date</Text>
                     <Text style={[styles.selectedDate]}>{date.getDate()}-{date.getMonth()+1}-{date.getFullYear()}</Text>
                     <View style={[styles.selectDateButton]}>
-                    <Button title="Select Date" color="#58c0a9" onPress={() => setOpen(true)}/>
+                    <Button title="Select" color="#58c0a9" onPress={() => setOpen(true)}/>
                     </View>
                     <DatePicker
                         modal

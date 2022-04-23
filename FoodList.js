@@ -115,7 +115,7 @@ function FoodList() {
                         <View style={styles.centeredView}>
                             <View style={styles.modalView}>
                                 <View style={[styles.editButtonContainer]}>
-                                    <Pressable onPress={() => { 
+                                    <TouchableOpacity onPress={() => { 
                                                 mc.setState({
                                                     page: '3',
                                                     foodList: mc.state.foodList,
@@ -123,7 +123,7 @@ function FoodList() {
                                                 }) 
                                             }}>
                                         <Image source={require('./src/img/png/edit.png')} style={{height: 30, width: 30}}></Image>
-                                    </Pressable>
+                                    </TouchableOpacity>
                                 </View>
                                 <Image style={[styles.detailsImage]} source={imagePreview}></Image>
                                 <Text style={styles.detailsNameText}>{foodInfoList[i][0]}</Text>

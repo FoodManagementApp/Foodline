@@ -62,7 +62,6 @@ const TextInputPage = () => {
             <ScrollView>
 
                 <View style={[styles.UIBackground, { height: 40 }]}>
-                    {/* <Text style={{ position: 'absolute', left: 5, top: 30, fontSize: 15, width: 300 }}>The code on the food</Text> */}
                 </View>
 
                 <View style={[styles.input1, { height: 120 }]}>
@@ -86,7 +85,7 @@ const TextInputPage = () => {
                     <Text style={[styles.TextBestBeforeDate]}>best before date</Text>
                     <Text style={[styles.selectedDate]}>{date.getDate()}-{date.getMonth()+1}-{date.getFullYear()}</Text>
                     <View style={[styles.selectDateButton]}>
-                        <Button title="Select Date" color="#58c0a9" onPress={() => setOpen(true)}/>
+                        <Button title="Select" color="#58c0a9" onPress={() => setOpen(true)}/>
                     </View>
                     <DatePicker
                         modal
