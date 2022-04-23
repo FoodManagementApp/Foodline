@@ -79,7 +79,7 @@ const ImageInputPage = () => {
             <View style={{ backgroundColor: '#222222' }}>
                 <View style={[styles.flexs, { height: 100 }]}>
                     <TouchableOpacity onPress={backPress}>
-                        <Image style={[styles.imageBack]} source={require('./src/img/png/返回.png')}></Image>
+                        <Image style={[styles.imageBack]} source={require('./src/img/png/back.png')}></Image>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={textPress}>

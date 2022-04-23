@@ -56,7 +56,7 @@ const TextInputPage = () => {
         <View>
             <View style={[styles.flexs, { alignItems: 'center', height: 80 }]}>
                 <TouchableOpacity onPress={backPress}>
-                    <Image style={{ left: 20, width: 25, height: 25, resizeMode: 'contain', marginTop: 10 }} source={require('./src/img/png/返回-黑.png')}></Image>
+                    <Image style={{ left: 20, width: 25, height: 25, resizeMode: 'contain', marginTop: 10 }} source={require('./src/img/png/back_black.png')}></Image>
                 </TouchableOpacity>
             </View>
             <ScrollView>
