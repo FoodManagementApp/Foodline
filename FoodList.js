@@ -12,6 +12,7 @@ import { MainContext } from './App';
 import Swipeout from 'react-native-swipeout';
 import { storage } from './storage';
 import ProgressBar from 'react-native-progress/Bar';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 function FoodList() {
     const mc = React.useContext(MainContext);
@@ -113,6 +114,17 @@ function FoodList() {
                     >
                         <View style={styles.centeredView}>
                             <View style={styles.modalView}>
+                            <View style={[styles.buttonContainer]}>
+                                <Pressable onPress={() => { 
+                                            mc.setState({
+                                                page: '3',
+                                                foodList: mc.state.foodList,
+                                                index: i
+                                            }) 
+                                        }}>
+                                    <Image source={require('./src/img/png/edit.png')} style={{height: 30, width: 30, left: 140, top: -20}}></Image>
+                                </Pressable>
+                                </View>
                                 <Image style={[styles.detailsImage]} source={imagePreview}></Image>
                                 <Text style={styles.detailsNameText}>{foodInfoList[i][0]}</Text>
                                 <Text style={styles.detailsBBDText}>Best Before Date: {foodInfoList[i][2]}</Text>
@@ -123,19 +135,6 @@ function FoodList() {
                                         title="OK"
                                         color="#58c0a9"
                                         onPress={() => { hideDetails(i) }}
-                                    />
-                                </View>
-                                <View style={[styles.buttonContainer]}>
-                                    <Button
-                                        title="Edit"
-                                        color="#58c0a9"
-                                        onPress={() => { 
-                                            mc.setState({
-                                                page: '3',
-                                                foodList: mc.state.foodList,
-                                                index: i
-                                            }) 
-                                        }}
                                     />
                                 </View>
                             </View>
