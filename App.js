@@ -10,7 +10,7 @@ function App() {
   SplashScreen.hide()
 
   const [state, setState] = React.useState(
-    { foodList: [], page: "-1", codeId: undefined, name: " ", imageUrl: ' ', sortCode: 2 },
+    { foodList: [], page: "-1"},
   );
 
   

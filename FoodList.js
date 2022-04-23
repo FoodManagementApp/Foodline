@@ -22,8 +22,7 @@ function FoodList() {
     //componentDidUpdate
     useEffect(() => { storage.save('foodListInStorage', mc.state.foodList) })
 
-    var sortCode = mc.state.sortCode
-
+    var sortCode = mc.state.sortCode==undefined?'2':mc.state.sortCode
     if (mc.state.foodList.length >= 0) {
         // Handle the visible of details page
         let visible = [];
