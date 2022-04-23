@@ -134,7 +134,7 @@ const MainPage = () => {
               <View style={styles.modalView}>
 
               <Pressable style = {{position: 'absolute', top: 10, right: 10}} onPress={sortCancel}>
-                 <Image source={require('./src/img/png/cancel.png')} style={{ width: 25, height: 25 }}></Image>
+                 <Image source={require('./src/img/png/cancel.png')} style={{ width: 28, height: 28 }}></Image>
                 </Pressable>
 
                 <View >
