@@ -70,6 +70,7 @@ const EditFoodPage = () => {
                 </View>
                 <View style={[styles.flexs, { height: 50 }]}>
                     <Text style={[styles.TextBestBeforeDate]}>best before date</Text>
+                    <Text style={[styles.selectedDate]}>{date.getDate()}-{date.getMonth()+1}-{date.getFullYear()}</Text>
                     <View style={[styles.selectDateButton]}>
                     <Button title="Select Date" color="#58c0a9" onPress={() => setOpen(true)}/>
                     </View>
@@ -129,6 +130,16 @@ const styles = StyleSheet.create({
         position: 'absolute',
         display: 'flex',
         right: 30
+    },
+
+    selectedDate: {
+        left: 165,
+        fontWeight: 'bold',
+        fontSize: 15,
+        color: '#333333',
+        marginTop: 7.5,
+        position: "absolute",
+        width: 300,
     },
 
     flexs: {
