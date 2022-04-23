@@ -132,11 +132,13 @@ const MainPage = () => {
           >
             <View style={styles.centeredView2}>
               <View style={styles.modalView}>
-                <View >
-                <Text style={styles.modalText}>Sort</Text>
-                <Pressable onPress={sortCancel}>
+
+              <Pressable style = {{position: 'absolute', top: 10, right: 10}} onPress={sortCancel}>
                  <Image source={require('./src/img/png/cancel.png')} style={{ width: 25, height: 25 }}></Image>
                 </Pressable>
+
+                <View >
+                <Text style={styles.modalText}>Sort</Text>
                 </View>
                 <Pressable
                   style={[styles.buttonSort, styles.buttonClose]}
@@ -158,7 +160,6 @@ const MainPage = () => {
                 >
                   <Text style={styles.textStyle}>by date added</Text>
                 </Pressable>
-
 
               </View>
             </View>
@@ -228,10 +229,12 @@ const styles = StyleSheet.create({
 
   // sort 
   centeredView2: {
+    position: 'absolute',
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 112
+    top: 100,
+    right: -10
   },
 
   modalView: {
