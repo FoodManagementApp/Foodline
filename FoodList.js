@@ -114,16 +114,16 @@ function FoodList() {
                     >
                         <View style={styles.centeredView}>
                             <View style={styles.modalView}>
-                            <View style={[styles.buttonContainer]}>
-                                <Pressable onPress={() => { 
-                                            mc.setState({
-                                                page: '3',
-                                                foodList: mc.state.foodList,
-                                                index: i
-                                            }) 
-                                        }}>
-                                    <Image source={require('./src/img/png/edit.png')} style={{height: 30, width: 30, left: 140, top: -20}}></Image>
-                                </Pressable>
+                                <View style={[styles.editButtonContainer]}>
+                                    <Pressable onPress={() => { 
+                                                mc.setState({
+                                                    page: '3',
+                                                    foodList: mc.state.foodList,
+                                                    index: i
+                                                }) 
+                                            }}>
+                                        <Image source={require('./src/img/png/edit.png')} style={{height: 30, width: 30}}></Image>
+                                    </Pressable>
                                 </View>
                                 <Image style={[styles.detailsImage]} source={imagePreview}></Image>
                                 <Text style={styles.detailsNameText}>{foodInfoList[i][0]}</Text>
@@ -266,8 +266,6 @@ const styles = StyleSheet.create({
         marginTop: 22
     },
 
-
-
     buttonContainer: {
         margin: 5,
         flexDirection: 'column',
@@ -275,6 +273,12 @@ const styles = StyleSheet.create({
         height: 40,
         width: 100,
         borderRadius: 20
+    },
+
+    editButtonContainer: {
+        justifyContent: 'center',
+        left: 110,
+        top: -20,
     },
 
     detailsImage: {
