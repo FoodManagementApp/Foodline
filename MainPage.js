@@ -72,9 +72,9 @@ const MainPage = () => {
               {/* <Text style={styles.TitleText}>foodline</Text> */}
               <Image style={{ width: 130, height: 43, resizeMode: 'contain', top: 35 }} source={require('./src/img/png/title.png')}></Image>
             </View>
-            <ScrollView style={styles.FoodList}>
+            <View style={styles.FoodList}>
               <FoodList></FoodList>
-            </ScrollView>
+            </View>
             {botton}
           </View>
       )

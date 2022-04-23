@@ -12,6 +12,7 @@ import {
 import { MainContext } from './App';
 import Swipeout from 'react-native-swipeout';
 import {storage} from './storage';
+import { ScrollView } from 'react-native-gesture-handler';
 
 function FoodList() {
     const mc = React.useContext(MainContext);
@@ -134,6 +135,7 @@ function FoodList() {
     }
     return (
         <View>
+            <ScrollView>
             {/* 0:首字母 1:添加日期 2:时间 */}
             {listArr.length>0?(sortcode=='0'?listArr.sort(function(a,b){return a.key.split(",")[2].localeCompare(b.key.split(",")[2])}):(sortcode=='1'? listArr.sort(function(a,b){
                 var da = new Date(a.key.split(",")[3]).valueOf()
@@ -141,16 +143,17 @@ function FoodList() {
                 return da-db}):listArr.sort(function(a,b){return a.key.split(",")[1] - b.key.split(",")[1]}))):<Text style={{ textAlign: 'center' }}>nothing here</Text>}
             <View style={{ height: 100 }}>
             </View>
+            </ScrollView>
             <View style={styles.centeredView2}>
       <Modal
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
           setModalVisible(!modalVisible);
         }}
       >
-        <View style={styles.centeredView2}>
+        <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Sort style</Text>
             <Pressable
@@ -180,7 +183,7 @@ function FoodList() {
         style={[styles.button, styles.buttonOpen]}
         onPress={() => setModalVisible(true)}
       >
-        <Text style={styles.textStyle}>Sort data</Text>
+        <Text style={styles.textStyle}>Sort</Text>
       </Pressable>
     </View>
         </View>
@@ -322,10 +325,14 @@ const styles = StyleSheet.create({
     },
 
     centeredView2: {
+        position: 'absolute',
         flex: 1,
         justifyContent: "center",
-        alignItems: "center",
-        marginTop: 112
+        // alignItems: "center",
+        // marginTop: 0,
+        width: 50,
+        right: 35,
+        top: 403
     },
 
     modalView: {
