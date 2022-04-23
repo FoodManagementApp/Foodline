@@ -60,6 +60,10 @@ const MainPage = () => {
     setModalVisible(!modalVisible)
   }
 
+  const sortCancel = () => {
+    setModalVisible(!modalVisible)
+  }
+
 
 
   var botton = (
@@ -104,7 +108,7 @@ const MainPage = () => {
         <View style={[styles.UIBackground, { height: 110 }]}>
           {/* <Text style={styles.TitleText}>foodline</Text> */}
           {/* sort button */}
-          <Pressable style = {{top: 70, left: 150}}
+          <Pressable style={{ top: 70, left: 150 }}
             onPress={() => setModalVisible(true)}
           >
             <Image source={require('./src/img/png/sorting.png')} style={{ width: 25, height: 25 }}></Image>
@@ -128,7 +132,12 @@ const MainPage = () => {
           >
             <View style={styles.centeredView2}>
               <View style={styles.modalView}>
+                <View >
                 <Text style={styles.modalText}>Sort</Text>
+                <Pressable onPress={sortCancel}>
+                 <Image source={require('./src/img/png/cancel.png')} style={{ width: 25, height: 25 }}></Image>
+                </Pressable>
+                </View>
                 <Pressable
                   style={[styles.buttonSort, styles.buttonClose]}
                   onPress={sortfun0}
@@ -138,17 +147,19 @@ const MainPage = () => {
                 <Text style={styles.modalText}></Text>
                 <Pressable
                   style={[styles.buttonSort, styles.buttonClose]}
-                  onPress={sortfun1}
-                >
-                  <Text style={styles.textStyle}>by date added</Text>
-                </Pressable>
-                <Text style={styles.modalText}></Text>
-                <Pressable
-                  style={[styles.buttonSort, styles.buttonClose]}
                   onPress={sortfun2}
                 >
                   <Text style={styles.textStyle}>by days left</Text>
                 </Pressable>
+                <Text style={styles.modalText}></Text>
+                <Pressable
+                  style={[styles.buttonSort, styles.buttonClose]}
+                  onPress={sortfun1}
+                >
+                  <Text style={styles.textStyle}>by date added</Text>
+                </Pressable>
+
+
               </View>
             </View>
           </Modal>
