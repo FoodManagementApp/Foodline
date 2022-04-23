@@ -135,7 +135,7 @@ android {
 
     defaultConfig {
         missingDimensionStrategy 'react-native-camera', 'general'
-        applicationId "com.foodline"
+        applicationId "com.foodapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
