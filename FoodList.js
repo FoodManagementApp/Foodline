@@ -11,6 +11,7 @@ import {
 import { MainContext } from './App';
 import Swipeout from 'react-native-swipeout';
 import { storage } from './storage';
+import ProgressBar from 'react-native-progress/Bar';
 
 function FoodList() {
     const mc = React.useContext(MainContext);
@@ -43,6 +44,8 @@ function FoodList() {
             let addDate = new Date(mc.state.foodList[i].addDate);
             var differenceTime = bbDate.getTime() - currentDate.getTime();
             var differenceDay = (differenceTime / (1000 * 3600 * 24)).toFixed(0);
+            var oldleftTime = bbDate.getTime() - addDate.getTime();
+            var oldleftDay = (oldleftTime / (1000 * 3600 * 24)).toFixed(0);
             var foodName = mc.state.foodList[i].foodName;
             var foodNamePreview = foodName.length > 10 ? foodName.substring(0, 10) + "..." : foodName;
             var imageUrl = mc.state.foodList[i].imageUrl;
@@ -82,7 +85,14 @@ function FoodList() {
                                 <Text style={[styles.TitleName]}>{foodNamePreview}</Text>
                                 <Text style={differenceTime > 0 ? styles.Number : styles.expiredNumber}>{differenceTime > 0 ? differenceDay : -differenceDay}</Text>
                                 <Text style={[styles.Days]}>{(differenceDay < 2 && differenceDay > -2) ? "day" : "days"}</Text>
+                            <View style={[styles.container]}>
+                            <ProgressBar 
+                                progress={(oldleftDay-differenceDay)/oldleftDay} 
+                                //progress={(365-differenceDay)/365}
+                                width={255} color={'#58c0a9'} />
                             </View>
+                            </View>
+                            
                         </TouchableOpacity>
                     </Swipeout>
 
@@ -117,27 +127,39 @@ function FoodList() {
 
             )
             listArr.push(item)
-        }
-
+        }  
     }
-
+    console.log(foodInfoList)
     return (
         <View>
             {/* sortCode 0: initial character 1:date added 2: best before time */}
-            {listArr.length > 0 ? (sortCode == '0' ? listArr.sort(function (a, b) { return a.key.split(",")[2].localeCompare(b.key.split(",")[2]) }) : (sortCode == '1' ? listArr.sort(function (a, b) {
-                var da = new Date(a.key.split(",")[3]).valueOf()
+            {listArr.length > 0 ? 
+                (sortCode == '0' ? 
+                    listArr.sort(function (a, b) { return a.key.split(",")[2].localeCompare(b.key.split(",")[2]) }) 
+                : (sortCode == '1' ? 
+                    listArr.sort(function (a, b) {var da = new Date(a.key.split(",")[3]).valueOf()
+                    var db = new Date(b.key.split(",")[3]).valueOf()
+                return da - db}) 
+                : (sortCode =='2'?listArr.sort(function (a, b) { return a.key.split(",")[1] - b.key.split(",")[1] })
+                :listArr.sort(function (a, b) {var da = new Date(a.key.split(",")[3]).valueOf()
                 var db = new Date(b.key.split(",")[3]).valueOf()
-                return da - db
-            }) : listArr.sort(function (a, b) { return a.key.split(",")[1] - b.key.split(",")[1] }))) : <Text style={{ textAlign: 'center' }}>nothing here</Text>}
+            return db - da}) ))) 
+            : <Text style={{ textAlign: 'center' }}>nothing here</Text>}
             <View style={{ height: 100 }}>
             </View>
         </View>
     )
-
 }
 
 const styles = StyleSheet.create({
-
+    container: {
+        display: 'flex',
+        position: 'absolute',
+        left: 100,
+        flexDirection: 'row',
+        top:45,
+        justifyContent: 'center',
+      },
     foodImage: {
         display: 'flex',
         position: 'absolute',

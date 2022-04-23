@@ -23,6 +23,8 @@
       - `npm install --save react-native-swipeout`
    7. react-native-storage  - 2022.4.22
       - `npm install react-native-storage `
+   8. react-native-progress  - 2022.4.22
+      - `npm install react-native-progress --save `
 
 
 requirement document: [【腾讯文档】208需求池](https://docs.qq.com/sheet/DQWJ4WGh2RWdRUmt2) 

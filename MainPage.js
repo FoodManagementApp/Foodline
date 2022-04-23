@@ -51,6 +51,14 @@ const MainPage = () => {
     })
     setModalVisible(!modalVisible)
   }
+  const sortByDateAddedNew = () => {
+    mc.setState({
+      page: "0",
+      foodList: mc.state.foodList,
+      sortCode: '3'
+    })
+    setModalVisible(!modalVisible)
+  }
   const sortByBestBeforeDate = () => {
     mc.setState({
       page: "0",
@@ -158,7 +166,14 @@ const MainPage = () => {
                   style={[styles.buttonSort, styles.buttonClose]}
                   onPress={sortByDateAdded}
                 >
-                  <Text style={styles.textStyle}>by date added</Text>
+                  <Text style={styles.textStyle}>by earliest </Text>
+                </Pressable>
+                <Text style={styles.modalText}></Text>
+                <Pressable
+                  style={[styles.buttonSort, styles.buttonClose]}
+                  onPress={sortByDateAddedNew}
+                >
+                  <Text style={styles.textStyle}>by latest</Text>
                 </Pressable>
 
               </View>
