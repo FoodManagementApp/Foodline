@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -6,6 +6,8 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  Pressable,
+  Modal
 } from 'react-native';
 import TextInputPage from './TextInputPage';
 import ImageInputPage from './ImageInputPage';
@@ -16,6 +18,7 @@ import { MainContext } from './App';
 
 const MainPage = () => {
   const mc = React.useContext(MainContext);
+  const [modalVisible, setModalVisible] = useState(false);
 
   mainPress = () => {
     mc.setState({
@@ -31,8 +34,36 @@ const MainPage = () => {
     })
   }
 
-    var botton = (
-      <View style={[styles.UIBackground, { height: 150 }]}>
+
+  const sortfun0 = () => {
+    mc.setState({
+      page: "0",
+      foodList: mc.state.foodList,
+      sortCode: '0'
+    })
+    setModalVisible(!modalVisible)
+  }
+  const sortfun1 = () => {
+    mc.setState({
+      page: "0",
+      foodList: mc.state.foodList,
+      sortCode: '1'
+    })
+    setModalVisible(!modalVisible)
+  }
+  const sortfun2 = () => {
+    mc.setState({
+      page: "0",
+      foodList: mc.state.foodList,
+      sortCode: '2'
+    })
+    setModalVisible(!modalVisible)
+  }
+
+
+
+  var botton = (
+    <View style={[styles.UIBackground, { height: 150 }]}>
       <View style={[styles.InputChoiceBox]}>
         <TouchableOpacity onPress={scanPress}>
           <View style={[styles.scanButton]}>
@@ -52,32 +83,78 @@ const MainPage = () => {
         <Image style={{ width: 45, height: 45, resizeMode: 'contain', top: -10 }} source={require('./src/img/png/carrot.png')}></Image>
       </TouchableOpacity>
     </View>
+
+
+  )
+  if (mc.state.page === '1') {
+    return (
+      <TextInputPage></TextInputPage>
     )
-    if (mc.state.page === '1') {
-      return (
-          <TextInputPage></TextInputPage>
-      )
-    } else if (mc.state.page === '2') {
-      return (
-          <ImageInputPage></ImageInputPage>
-      )
-    }else if (mc.state.page === '-1') {
-      return (
-          <StoreLoader></StoreLoader>
-      )
-    }else{
-      return (
-          <View >
-            <View style={[styles.UIBackground, { height: 110 }]}>
-              {/* <Text style={styles.TitleText}>foodline</Text> */}
-              <Image style={{ width: 130, height: 43, resizeMode: 'contain', top: 35 }} source={require('./src/img/png/title.png')}></Image>
+  } else if (mc.state.page === '2') {
+    return (
+      <ImageInputPage></ImageInputPage>
+    )
+  } else if (mc.state.page === '-1') {
+    return (
+      <StoreLoader></StoreLoader>
+    )
+  } else {
+    return (
+      <View >
+        <View style={[styles.UIBackground, { height: 110 }]}>
+          {/* <Text style={styles.TitleText}>foodline</Text> */}
+          {/* sort button */}
+          <Pressable style = {{top: 70, left: 150}}
+            onPress={() => setModalVisible(true)}
+          >
+            <Image source={require('./src/img/png/sorting.png')} style={{ width: 25, height: 25 }}></Image>
+          </Pressable>
+
+          <Image style={{ width: 130, height: 43, resizeMode: 'contain', top: 5 }} source={require('./src/img/png/title.png')}></Image>
+        </View>
+        <ScrollView style={styles.FoodList}>
+          <FoodList></FoodList>
+        </ScrollView>
+        {botton}
+        {/* sort func */}
+        <View style={styles.centeredView2}>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              setModalVisible(!modalVisible);
+            }}
+          >
+            <View style={styles.centeredView2}>
+              <View style={styles.modalView}>
+                <Text style={styles.modalText}>Sort</Text>
+                <Pressable
+                  style={[styles.buttonSort, styles.buttonClose]}
+                  onPress={sortfun0}
+                >
+                  <Text style={styles.textStyle}>by food name</Text>
+                </Pressable>
+                <Text style={styles.modalText}></Text>
+                <Pressable
+                  style={[styles.buttonSort, styles.buttonClose]}
+                  onPress={sortfun1}
+                >
+                  <Text style={styles.textStyle}>by date added</Text>
+                </Pressable>
+                <Text style={styles.modalText}></Text>
+                <Pressable
+                  style={[styles.buttonSort, styles.buttonClose]}
+                  onPress={sortfun2}
+                >
+                  <Text style={styles.textStyle}>by days left</Text>
+                </Pressable>
+              </View>
             </View>
-            <View style={styles.FoodList}>
-              <FoodList></FoodList>
-            </View>
-            {botton}
-          </View>
-      )
+          </Modal>
+        </View>
+      </View>
+    )
   }
 
 }
@@ -118,25 +195,69 @@ const styles = StyleSheet.create({
 
   scanButton: {
     flexDirection: 'row',
-    borderStyle: 'solid', 
-    borderColor: '#bcbcbc', 
-    borderWidth: 1, 
-    borderRightWidth: 0.5, 
-    borderTopLeftRadius: 10, 
+    borderStyle: 'solid',
+    borderColor: '#bcbcbc',
+    borderWidth: 1,
+    borderRightWidth: 0.5,
+    borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
     backgroundColor: '#ffffff'
   },
 
-  writeButton:{
-    flexDirection: 'row', 
-    borderStyle: 'solid', 
-    borderColor: '#bcbcbc', 
-    borderWidth: 1, 
-    borderLeftWidth: 0.5, 
-    borderTopRightRadius: 10, 
+  writeButton: {
+    flexDirection: 'row',
+    borderStyle: 'solid',
+    borderColor: '#bcbcbc',
+    borderWidth: 1,
+    borderLeftWidth: 0.5,
+    borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
     backgroundColor: '#ffffff'
-  }
+  },
+
+  // sort 
+  centeredView2: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 112
+  },
+
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 25,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  buttonOpen: {
+    backgroundColor: "#58c0a9",
+  },
+  buttonClose: {
+    backgroundColor: "#58c0a9",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  },
+  buttonSort: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
 
 })
 

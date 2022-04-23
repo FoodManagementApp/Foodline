@@ -6,13 +6,11 @@ import {
     Image,
     TouchableOpacity,
     Modal,
-    Pressable,
     Button,
 } from 'react-native';
 import { MainContext } from './App';
 import Swipeout from 'react-native-swipeout';
-import {storage} from './storage';
-import { ScrollView } from 'react-native-gesture-handler';
+import { storage } from './storage';
 
 function FoodList() {
     const mc = React.useContext(MainContext);
@@ -20,23 +18,23 @@ function FoodList() {
     let foodInfoList = [];
     // Current date
     let currentDate = new Date();
-    let [sortcode,setSortcode] = useState('2');
     //componentDidUpdate
-    useEffect(()=>{storage.save('foodListInStorage', mc.state.foodList)}) 
-    const [modalVisible, setModalVisible] = useState(false);
+    useEffect(() => { storage.save('foodListInStorage', mc.state.foodList) })
+
+    var sortCode = mc.state.sortCode
 
     if (mc.state.foodList.length >= 0) {
         // Handle the visible of details page
         let visible = [];
-        for (let j = 0; j < mc.state.foodList.length; j++) {visible.push(false)}
-        const [detailsVisible, setDetailsVisible] = useState({visibleList:visible});
+        for (let j = 0; j < mc.state.foodList.length; j++) { visible.push(false) }
+        const [detailsVisible, setDetailsVisible] = useState({ visibleList: visible });
         const showDetails = (i) => {
             visible[i] = true;
-            setDetailsVisible({visibleList:visible});
+            setDetailsVisible({ visibleList: visible });
         }
         const hideDetails = (i) => {
             visible[i] = false;
-            setDetailsVisible({visibleList:visible});
+            setDetailsVisible({ visibleList: visible });
         }
 
         for (let i = 0; i < mc.state.foodList.length; i++) {
@@ -56,35 +54,36 @@ function FoodList() {
 
             var swipeoutBtns = [
                 {
-                backgroundColor: '#fb7373',
-                underlayColor: '#fb7373',
-                title: 'Delete',
-                color: "#ffffff",
-                text: 'Delete',
-                // Delete
-                   onPress: () => {
-                    let newList = [];
-                    for (let i = 0; i < mc.state.foodList.length; i++) {
-                        newList.push(mc.state.foodList[i])
+                    backgroundColor: '#fb7373',
+                    underlayColor: '#fb7373',
+                    title: 'Delete',
+                    color: "#ffffff",
+                    text: 'Delete',
+                    // Delete
+                    onPress: () => {
+                        let newList = [];
+                        for (let i = 0; i < mc.state.foodList.length; i++) {
+                            newList.push(mc.state.foodList[i])
+                        }
+                        ; newList.splice(i, 1); mc.setState({
+                            page: "0",
+                            foodList: newList
+                        })
                     }
-                    ; newList.splice(i, 1); mc.setState({
-                    page: "0",
-                    foodList: newList
-                    })
-                }}
+                }
             ]
 
             let item = (
                 <View key={[i, differenceDay, foodName, addDate]}>
-                    <Swipeout right={swipeoutBtns} style = {{backgroundColor: '#ffffff'}}>
-                    <TouchableOpacity onPress={() => {showDetails(i)}}>
-                        <View style={[styles.flexs, { height: 80 }]}>
-                            <Image style={[styles.foodImage]} source={imagePreview}></Image>
-                            <Text style={[styles.TitleName]}>{foodNamePreview}</Text>
-                            <Text style= {differenceTime>0 ? styles.Number : styles.expiredNumber}>{differenceTime>0 ? differenceDay : -differenceDay}</Text>
-                            <Text style={[styles.Days]}>{(differenceDay < 2 && differenceDay > -2)? "day" : "days"}</Text>
-                        </View>
-                    </TouchableOpacity>
+                    <Swipeout right={swipeoutBtns} style={{ backgroundColor: '#ffffff' }}>
+                        <TouchableOpacity onPress={() => { showDetails(i) }}>
+                            <View style={[styles.flexs, { height: 80 }]}>
+                                <Image style={[styles.foodImage]} source={imagePreview}></Image>
+                                <Text style={[styles.TitleName]}>{foodNamePreview}</Text>
+                                <Text style={differenceTime > 0 ? styles.Number : styles.expiredNumber}>{differenceTime > 0 ? differenceDay : -differenceDay}</Text>
+                                <Text style={[styles.Days]}>{(differenceDay < 2 && differenceDay > -2) ? "day" : "days"}</Text>
+                            </View>
+                        </TouchableOpacity>
                     </Swipeout>
 
                     {/* Show details of food */}
@@ -92,8 +91,8 @@ function FoodList() {
                         animationType="fade"
                         transparent={true}
                         visible={detailsVisible.visibleList[i]}
-                        onRequestClose = {()=> {
-                            {hideDetails(i)};
+                        onRequestClose={() => {
+                            { hideDetails(i) };
                         }}
                     >
                         <View style={styles.centeredView}>
@@ -107,7 +106,7 @@ function FoodList() {
                                     <Button
                                         title="OK"
                                         color="#58c0a9"
-                                        onPress={() => {hideDetails(i)}}
+                                        onPress={() => { hideDetails(i) }}
                                     />
                                 </View>
                             </View>
@@ -115,77 +114,23 @@ function FoodList() {
                     </Modal>
 
                 </View>
-                
+
             )
             listArr.push(item)
-        } 
-         
+        }
+
     }
-    const sortfun0= () => {
-        setSortcode('0')
-        setModalVisible(!modalVisible)
-    }
-    const sortfun1= () => {
-        setSortcode('1')
-        setModalVisible(!modalVisible)
-    }
-    const sortfun2= () => {
-        setSortcode('2')
-        setModalVisible(!modalVisible)
-    }
+
     return (
         <View>
-            <ScrollView>
-            {/* 0:首字母 1:添加日期 2:时间 */}
-            {listArr.length>0?(sortcode=='0'?listArr.sort(function(a,b){return a.key.split(",")[2].localeCompare(b.key.split(",")[2])}):(sortcode=='1'? listArr.sort(function(a,b){
+            {/* sortCode 0: initial character 1:date added 2: best before time */}
+            {listArr.length > 0 ? (sortCode == '0' ? listArr.sort(function (a, b) { return a.key.split(",")[2].localeCompare(b.key.split(",")[2]) }) : (sortCode == '1' ? listArr.sort(function (a, b) {
                 var da = new Date(a.key.split(",")[3]).valueOf()
                 var db = new Date(b.key.split(",")[3]).valueOf()
-                return da-db}):listArr.sort(function(a,b){return a.key.split(",")[1] - b.key.split(",")[1]}))):<Text style={{ textAlign: 'center' }}>nothing here</Text>}
+                return da - db
+            }) : listArr.sort(function (a, b) { return a.key.split(",")[1] - b.key.split(",")[1] }))) : <Text style={{ textAlign: 'center' }}>nothing here</Text>}
             <View style={{ height: 100 }}>
             </View>
-            </ScrollView>
-            <View style={styles.centeredView2}>
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Sort style</Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={sortfun0}
-            >
-              <Text style={styles.textStyle}>Alphabetical Sort</Text>
-            </Pressable>
-            <Text style={styles.modalText}></Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={sortfun1}
-            >
-              <Text style={styles.textStyle}>Date Added Sort</Text>
-            </Pressable>
-            <Text style={styles.modalText}></Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={sortfun2}
-            >
-              <Text style={styles.textStyle}>Day left Sort</Text>
-            </Pressable>
-          </View>
-        </View>
-      </Modal>
-      <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}
-      >
-        <Text style={styles.textStyle}>Sort</Text>
-      </Pressable>
-    </View>
         </View>
     )
 
@@ -257,26 +202,6 @@ const styles = StyleSheet.create({
         position: 'absolute'
     },
 
-      button: {
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2,
-      },
-      buttonOpen: {
-        backgroundColor: "#58c0a9",
-      },
-      buttonClose: {
-        backgroundColor: "#58c0a9",
-      },
-      textStyle: {
-        color: "white",
-        fontWeight: "bold",
-        textAlign: "center"
-      },
-      modalText: {
-        marginBottom: 15,
-        textAlign: "center"
-      },
 
 
     // container: {
@@ -324,32 +249,7 @@ const styles = StyleSheet.create({
         marginTop: 22
     },
 
-    centeredView2: {
-        position: 'absolute',
-        flex: 1,
-        justifyContent: "center",
-        // alignItems: "center",
-        // marginTop: 0,
-        width: 50,
-        right: 35,
-        top: 403
-    },
 
-    modalView: {
-        margin: 20,
-        backgroundColor: "white",
-        borderRadius: 25,
-        padding: 35,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5
-    },
 
     buttonContainer: {
         margin: 5,
@@ -363,8 +263,8 @@ const styles = StyleSheet.create({
     detailsImage: {
         display: 'flex',
         alignItems: 'center',
-        width: 150, 
-        height: 150, 
+        width: 150,
+        height: 150,
         resizeMode: 'contain'
     },
 
