@@ -107,8 +107,8 @@ const EditFoodPage = () => {
                 </View>
                 <View style={[styles.Button]}>
                     <Button
-                        title="Cancle"
-                        color="#58c0a9"
+                        title="Cancel"
+                        color="#fb7373"
                         onPress={backPress}
                     />
                 </View>
