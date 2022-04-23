@@ -93,7 +93,7 @@ function FoodList() {
                                 <Text style={[styles.TitleName]}>{foodNamePreview}</Text>
                                 <Text style={differenceTime > 0 ? styles.Number : styles.expiredNumber}>{differenceTime > 0 ? differenceDay : -differenceDay}</Text>
                                 <Text style={[styles.Days]}>{(differenceDay < 2 && differenceDay > -2) ? "day" : "days"}</Text>
-                            <View style={[styles.container]}>
+                            <View style={[styles.progressBarContainer]}>
                             <ProgressBar 
                                 progress={(oldleftDay-differenceDay)/oldleftDay} 
                                 width={255} color={barColor} />
@@ -159,7 +159,7 @@ function FoodList() {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    progressBarContainer: {
         display: 'flex',
         position: 'absolute',
         left: 100,
@@ -230,46 +230,6 @@ const styles = StyleSheet.create({
         right: 30, width: 250, height: 50, top: 30, resizeMode: 'contain',
         position: 'absolute'
     },
-
-
-
-    // container: {
-    //     flex: 1,
-    //     backgroundColor: '#333333',
-    // },
-    // pre: {
-    //     flexDirection: 'row',
-    //     justifyContent: 'space-between',
-    //     alignItems: 'center',
-    //     // borderWidth: Pixel,
-    //     borderColor: '#FFB1B1',
-    //     width: px2dp(213),
-    //     height: px2dp(20),
-    //     borderRadius: px2dp(20),
-    //     paddingLeft: px2dp(10),
-    //     paddingRight: px2dp(10),
-    //     marginBottom: px2dp(10),
-    //     marginTop: px2dp(10),
-    //     position: 'relative',
-    //     overflow: 'hidden',
-    // },
-    // preMain: {
-    //     flexDirection: 'row',
-    //     justifyContent: 'space-between',
-    //     alignItems: 'center',
-    //     height: 20,
-    //     position: 'relative',
-    //     flex: 1,
-    //     zIndex: 9
-    // },
-    // preOisn: {
-    //     position: 'absolute',
-    //     height: px2dp(20),
-    //     backgroundColor: '#FFCFCF',
-    //     borderBottomLeftRadius: px2dp(2000),
-    //     borderTopLeftRadius: px2dp(2000),
-    //     zIndex: 8
-    // },
 
     modalView: {
         margin: 20,

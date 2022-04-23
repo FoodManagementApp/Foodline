@@ -164,18 +164,17 @@ const MainPage = () => {
                 <Text style={styles.modalText}></Text>
                 <Pressable
                   style={[styles.buttonSort, styles.buttonClose]}
-                  onPress={sortByDateAdded}
+                  onPress={sortByDateAddedNew}
                 >
-                  <Text style={styles.textStyle}>by earliest </Text>
+                  <Text style={styles.textStyle}>by date added (new2old)</Text>
                 </Pressable>
                 <Text style={styles.modalText}></Text>
                 <Pressable
                   style={[styles.buttonSort, styles.buttonClose]}
-                  onPress={sortByDateAddedNew}
+                  onPress={sortByDateAdded}
                 >
-                  <Text style={styles.textStyle}>by latest</Text>
+                  <Text style={styles.textStyle}>by date added (old2new)</Text>
                 </Pressable>
-
               </View>
             </View>
           </Modal>
