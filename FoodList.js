@@ -95,7 +95,7 @@ function FoodList() {
                             <View style={[styles.progressBarContainer]}>
                             <ProgressBar 
                                 progress={(oldleftDay-differenceDay)/oldleftDay} 
-                                width={255} color={barColor} />
+                                width={220} color={barColor} />
                             </View>
                             </View>
                             
