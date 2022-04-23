@@ -35,7 +35,7 @@ const MainPage = () => {
   }
 
 
-  const sortfun0 = () => {
+  const sortByFoodName = () => {
     mc.setState({
       page: "0",
       foodList: mc.state.foodList,
@@ -43,7 +43,7 @@ const MainPage = () => {
     })
     setModalVisible(!modalVisible)
   }
-  const sortfun1 = () => {
+  const sortByDateAdded = () => {
     mc.setState({
       page: "0",
       foodList: mc.state.foodList,
@@ -51,7 +51,7 @@ const MainPage = () => {
     })
     setModalVisible(!modalVisible)
   }
-  const sortfun2 = () => {
+  const sortByBestBeforeDate = () => {
     mc.setState({
       page: "0",
       foodList: mc.state.foodList,
@@ -142,21 +142,21 @@ const MainPage = () => {
                 </View>
                 <Pressable
                   style={[styles.buttonSort, styles.buttonClose]}
-                  onPress={sortfun0}
+                  onPress={sortByFoodName}
                 >
                   <Text style={styles.textStyle}>by food name</Text>
                 </Pressable>
                 <Text style={styles.modalText}></Text>
                 <Pressable
                   style={[styles.buttonSort, styles.buttonClose]}
-                  onPress={sortfun2}
+                  onPress={sortByBestBeforeDate}
                 >
                   <Text style={styles.textStyle}>by days left</Text>
                 </Pressable>
                 <Text style={styles.modalText}></Text>
                 <Pressable
                   style={[styles.buttonSort, styles.buttonClose]}
-                  onPress={sortfun1}
+                  onPress={sortByDateAdded}
                 >
                   <Text style={styles.textStyle}>by date added</Text>
                 </Pressable>
