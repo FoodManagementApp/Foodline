@@ -1,17 +1,15 @@
-# FoodManagementApp
+# Foodline -- A Food Mangement App
 
-Release version (Android Only): 
+## Release Version (Android Only): 
+
 [Download Foodline v1.0.0](https://github.com/FoodManagementApp/FoodManagementApp/releases/tag/v1.0.0)
 
-## Learn map
+Enjoy~
 
-1. Download `node.js` and `Andriod studio`
+## Development Map
+1. Install `node.js` and `Andriod studio`
 2. Connect your andriod device with your PC via usb.
-3. - run `npm i -g react-native-cli`
-   - run `npx react-native run-android `
-   	- [run on device](https://reactnative.cn/docs/running-on-device)
-4. Install Denpendency
-
+3. Install Denpendency
    1. react-native-camera
       - `npm install react-native-camera --save react-native link react-native-camera`
    2. react-native-qrcode-scanner
@@ -30,6 +28,9 @@ Release version (Android Only):
       - `npm install react-native-progress --save `
    9. react-native-splash-screen - 2022.4.23
       - `npm i react-native-splash-screen --save `
+4. - run `npm i -g react-native-cli`
+   - run `npx react-native run-android `
+   	- [run on device](https://reactnative.dev/docs/running-on-device#3-build-and-run-your-app)
 
 development documents:
 requirement document: [requirements pool(Chinese version)](https://docs.qq.com/sheet/DQWJ4WGh2RWdRUmt2) 
