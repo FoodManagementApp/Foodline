@@ -54,7 +54,15 @@ function FoodList() {
             var remarkPreview = remark == undefined ? "No notes" : remark
             foodInfo.push(foodName, addDate.toDateString(), bbDate.toDateString(), remarkPreview)
             foodInfoList.push(foodInfo)
-
+            var barColor = '#58c0a9'
+            var dayRate = (oldleftDay-differenceDay)/oldleftDay
+            if(dayRate>=0.9){
+                barColor = '#fb7373'
+            }else if(dayRate<0.9 && dayRate>0.5){
+                barColor = '#ffcc00'
+            }else if(dayRate<=0.5 && dayRate>0){
+                barColor = '#58c0a9'
+            }
             var swipeoutBtns = [
                 {
                     backgroundColor: '#fb7373',
@@ -88,8 +96,7 @@ function FoodList() {
                             <View style={[styles.container]}>
                             <ProgressBar 
                                 progress={(oldleftDay-differenceDay)/oldleftDay} 
-                                //progress={(365-differenceDay)/365}
-                                width={255} color={'#58c0a9'} />
+                                width={255} color={barColor} />
                             </View>
                             </View>
                             
