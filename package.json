@@ -22,6 +22,7 @@
     "react-native-progress": "^5.0.0",
     "react-native-px2dp": "^1.1.0",
     "react-native-qrcode-scanner": "^1.5.5",
+    "react-native-splash-screen": "^3.3.0",
     "react-native-storage": "^0.2.4",
     "react-native-swipeout": "^2.3.6"
   },

@@ -25,6 +25,8 @@
       - `npm install react-native-storage `
    8. react-native-progress  - 2022.4.22
       - `npm install react-native-progress --save `
+   9. react-native-splash-screen - 2022.4.23
+      - `npm i react-native-splash-screen --save `
 
 
 requirement document: [【腾讯文档】208需求池](https://docs.qq.com/sheet/DQWJ4WGh2RWdRUmt2) 

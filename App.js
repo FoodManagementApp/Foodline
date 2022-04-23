@@ -1,13 +1,18 @@
 import React from 'react';
 import MainPage from './MainPage';
 export const MainContext = React.createContext({});
+import SplashScreen from 'react-native-splash-screen';
+
 
 function App() {
 
   const [state, setState] = React.useState(
     { foodList: [], page: "-1", codeId: undefined, name: " ", imageUrl: ' ', sortCode: 2 },
   );
+
+  
   return (
+
     <MainContext.Provider value={{
       state,
       setState,
@@ -15,7 +20,9 @@ function App() {
       <MainPage></MainPage>
     </MainContext.Provider>
   )
+
 }
+
 
 
 
