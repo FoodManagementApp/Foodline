@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import TextInputPage from './TextInputPage';
 import ImageInputPage from './ImageInputPage';
+import EditFoodPage from './EditFoodPage';
 import FoodList from './FoodList';
 import StoreLoader from './StoreLoader';
 import { MainContext } from './App';
@@ -106,7 +107,11 @@ const MainPage = () => {
     return (
       <ImageInputPage></ImageInputPage>
     )
-  } else if (mc.state.page === '-1') {
+  } else if (mc.state.page === '3') {
+    return (
+      <EditFoodPage></EditFoodPage>
+    )
+  }else if (mc.state.page === '-1') {
     return (
       <StoreLoader></StoreLoader>
     )

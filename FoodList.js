@@ -125,9 +125,24 @@ function FoodList() {
                                         onPress={() => { hideDetails(i) }}
                                     />
                                 </View>
+                                <View style={[styles.buttonContainer]}>
+                                    <Button
+                                        title="Edit"
+                                        color="#58c0a9"
+                                        onPress={() => { 
+                                            mc.setState({
+                                                page: '3',
+                                                foodList: mc.state.foodList,
+                                                index: i
+                                            }) 
+                                        }}
+                                    />
+                                </View>
                             </View>
                         </View>
                     </Modal>
+
+                    
 
                 </View>
 
